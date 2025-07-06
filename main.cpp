@@ -92,9 +92,14 @@ int main() {
         if (idOfLoggedUser == 0) {
             // Interface
             system("cls");
+            cout << "    >>>> MAIN MENU <<<<    " << endl;
+            cout << "---------------------------" << endl;
             cout << "1. Sign up" << endl;
             cout << "2. Log in" << endl;
             cout << "9. Quit program" << endl;
+            cout << "---------------------------" << endl;
+            cout << "Your choice: ";
+
             cin >> choice;
 
             if (choice == '1') {
