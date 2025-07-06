@@ -6,11 +6,15 @@
 #include <iostream>
 #include <windows.h>
 #include <vector>
+#include <sstream>
+#include <string>
+#include <fstream>
 using namespace std;
 
 struct User {
     int id;
-    string username, password;
+    string username;
+    string password;
 };
 
 // Register a new user and return number of logged users
@@ -83,11 +87,43 @@ void changePassword(vector<User>& users, int idOfLoggedUser) {
     }
 }
 
+void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
+    fstream file;
+    string line, userId, username, password, dummy;
+    int userCounter = 0;
+    User user;
+
+    file.open(filename, ios::in);
+    if (file.good()) {
+        while (getline(file, line)) { // Loading database
+            istringstream iss(line);
+
+            getline(iss, userId, '|');
+            getline(iss, username, '|');
+            getline(iss, password, '|');
+            getline(iss, dummy, '|'); // ignoring end '|'
+
+            user.id = stoi(userId);
+            user.username = username;
+            user.password = password;
+
+            users.push_back(user);
+            userCounter++;
+        }
+        numberOfUsers = userCounter; // also sets numberOfAddressees!
+        file.close();
+    }
+}
+
 int main() {
     vector<User> users;
     int idOfLoggedUser = 0; // > 0 means somebody is logged in, 0 means nobody is logged in and Interface menu is active
     int numberOfUsers = 0;
     char choice;
+    string filename = "Users.txt";
+
+    loadUsers(users, numberOfUsers, filename); // numberOfUsers necessary?
+
     while(true) {
         if (idOfLoggedUser == 0) {
             // Interface
