@@ -31,3 +31,8 @@ desktop.ini
 *.swp
 *.bak
 
+# =============================
+# Ignore user data files
+# =============================
+Users.txt
+Addressees.txt
