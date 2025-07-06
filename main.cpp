@@ -17,8 +17,26 @@ struct User {
     string password;
 };
 
+void appendUsersFile(User user, string filename) {
+    fstream file;
+    file.open(filename, ios::out | ios::app);
+
+    if (file.good()) {
+        file << user.id << "|";
+        file << user.username << "|";
+        file << user.password << "|" << endl;
+        file.close();
+
+        cout << endl << "User added" << endl;
+        Sleep(1500);
+    } else {
+        cout << "failed to open the file and save the data in it" << endl;
+        Sleep(1500);
+    }
+}
+
 // Register a new user and return number of logged users
-int signUp(vector<User>& users) {
+int signUp(vector<User>& users, string filename) {
     string username, password;
     int numberOfUsers = users.size();
     cout << "Enter username: ";
@@ -41,6 +59,7 @@ int signUp(vector<User>& users) {
     newUser.id = numberOfUsers + 1;
     users.push_back(newUser);
     cout << "Account created" << endl;
+    appendUsersFile(newUser, filename);
     Sleep(1000);
     return numberOfUsers + 1;
 }
@@ -139,7 +158,7 @@ int main() {
             cin >> choice;
 
             if (choice == '1') {
-                numberOfUsers = signUp(users);
+                numberOfUsers = signUp(users, filename);
             } else if (choice == '2') {
                 idOfLoggedUser = logIn(users);
             } else if (choice == '9') {
