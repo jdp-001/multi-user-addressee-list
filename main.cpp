@@ -27,7 +27,7 @@ void appendUsersFile(User user, string filename) {
         file << user.password << "|" << endl;
         file.close();
 
-        cout << endl << "User added" << endl;
+        cout << "File updated" << endl;
         Sleep(1500);
     } else {
         cout << "failed to open the file and save the data in it" << endl;
