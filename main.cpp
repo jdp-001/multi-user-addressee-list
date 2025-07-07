@@ -144,7 +144,7 @@ int main() {
     loadUsers(users, numberOfUsers, filename); // numberOfUsers necessary?
 
     while(true) {
-        if (idOfLoggedUser == 0) {
+        if (idOfLoggedUser == 0) { // If nobody is logged in
             // Interface
             system("cls");
             cout << "    >>>> MAIN MENU <<<<    " << endl;
@@ -164,7 +164,7 @@ int main() {
             } else if (choice == '9') {
                 exit(0);
             }
-        } else {
+        } else { // If somebody is logged in
             // Menu
             system("cls");
             cout << "1. Change password" << endl;
