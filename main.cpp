@@ -44,7 +44,7 @@ int signUp(vector<User>& users, string filename) {
     int i = 0;
     while (i < numberOfUsers) {
         if (users[i].username == username) {
-            cout << "Such username already exists. Enter another username" << endl;
+            cout << "Such username already exists. Enter another username: ";
             cin >> username;
             i = 0;
         } else {
