@@ -73,7 +73,7 @@ int logIn(vector<User>& users) {
     for (int i = 0; i < numberOfUsers; i++) {
         if (users[i].username == username) {
             for (int attempt = 0; attempt < 3; attempt++) {
-                cout << "Enter password. " << 3 - attempt << " attempts remaining: ";
+                cout << "Enter password. " << 3 - attempt << " attempt(s) remaining: ";
                 cin >> password;
                 if (password == users[i].password) {
                     cout << "You are logged in" << endl;
