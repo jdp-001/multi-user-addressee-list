@@ -177,7 +177,7 @@ int main() {
             cout << "6. Edit addressee" << endl;
             cout << "---------------------------" << endl;
             cout << "7. Change password" << endl;
-            cout << "7. Log out" << endl;
+            cout << "8. Log out" << endl;
             cout << "---------------------------" << endl;
             cout << "Your choice: ";
             cin >> choice;
