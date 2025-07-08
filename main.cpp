@@ -17,6 +17,16 @@ struct User {
     string password;
 };
 
+struct Addressee {
+    int id;
+    int userId;
+    string firstName;
+    string lastName;
+    string phone;
+    string email;
+    string address;
+};
+
 void appendNewUserToUsersFile(User user, string filename) {
     fstream file;
     file.open(filename, ios::out | ios::app);
@@ -134,8 +144,29 @@ void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
     }
 }
 
+void addAddressee(vector <Addressee>& addressees) {
+}
+
+void searchAddresseeByFirstName(const vector <Addressee>& addressees) {
+}
+
+void searchAddresseeByLastName(const vector <Addressee>& addressees) {
+}
+
+void showAllAddressees(const vector <Addressee>& addressees) {
+}
+
+void removeAddressee(vector <Addressee>& addressees, string filename) {
+}
+
+void editAddressee(vector <Addressee>& addressees, string filename) {
+}
+
+
+
 int main() {
     vector<User> users;
+    vector<Addressee> addressees;
     int idOfLoggedUser = 0; // > 0 means somebody is logged in, 0 means nobody is logged in and Interface menu is active
     int numberOfUsers = 0;
     char choice;
@@ -181,14 +212,39 @@ int main() {
             cout << "---------------------------" << endl;
             cout << "Your choice: ";
             cin >> choice;
-            if (choice == '1') {
+
+            switch (choice) {
+            case '1':
+                addAddressee(addressees);
+                break;
+            case '2':
+                searchAddresseeByFirstName(addressees);
+                break;
+            case '3':
+                searchAddresseeByLastName(addressees);
+                break;
+            case '4':
+                showAllAddressees(addressees);
+                break;
+            case '5':
+                removeAddressee(addressees, filename);
+                break;
+            case '6':
+                editAddressee(addressees, filename);
+                break;
+            case '7':
                 changePassword(users, idOfLoggedUser);
                 Sleep(1500);
-            } else if (choice == '2') {
+                break;
+            case '8':
                 idOfLoggedUser = 0;
+                break;
+            default:
+                cout << "Such an option does not exist." << endl;
+                Sleep(1500);
+                break;
             }
         }
     }
     return 0;
 }
-
