@@ -36,3 +36,8 @@ desktop.ini
 # =============================
 Users.txt
 Addressees.txt
+
+# =============================
+# FreeMind mind map files
+# =============================
+*.mm
