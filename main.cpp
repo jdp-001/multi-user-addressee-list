@@ -167,8 +167,19 @@ int main() {
         } else { // If somebody is logged in
             // Menu
             system("cls");
-            cout << "1. Change password" << endl;
-            cout << "2. Log out" << endl;
+            cout << "    >>>> USER MENU <<<<    " << endl;
+            cout << "---------------------------" << endl;
+            cout << "1. Add adressee" << endl;
+            cout << "2. Search by first name" << endl;
+            cout << "3. Search by last name" << endl;
+            cout << "4. View adressees" << endl;
+            cout << "5. Remove adressee" << endl;
+            cout << "6. Edit addressee" << endl;
+            cout << "---------------------------" << endl;
+            cout << "7. Change password" << endl;
+            cout << "7. Log out" << endl;
+            cout << "---------------------------" << endl;
+            cout << "Your choice: ";
             cin >> choice;
             if (choice == '1') {
                 changePassword(users, idOfLoggedUser);
