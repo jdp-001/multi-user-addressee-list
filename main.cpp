@@ -17,7 +17,7 @@ struct User {
     string password;
 };
 
-void appendUsersFile(User user, string filename) {
+void appendNewUserToUsersFile(User user, string filename) {
     fstream file;
     file.open(filename, ios::out | ios::app);
 
@@ -59,7 +59,7 @@ int signUp(vector<User>& users, string filename) {
     newUser.id = numberOfUsers + 1;
     users.push_back(newUser);
     cout << "Account created" << endl;
-    appendUsersFile(newUser, filename);
+    appendNewUserToUsersFile(newUser, filename);
     Sleep(1000);
     return numberOfUsers + 1;
 }
