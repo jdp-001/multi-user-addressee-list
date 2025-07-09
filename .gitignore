@@ -41,3 +41,14 @@ Addressees.txt
 # FreeMind mind map files
 # =============================
 *.mm
+
+# =============================
+# Ignore FreeMind files
+# =============================
+MultiUserAddresseeList.mm
+
+# =============================
+# Ignore dependency file
+# =============================
+MultiUserAddresseeList.depend
+
