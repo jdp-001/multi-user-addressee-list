@@ -13,9 +13,24 @@ string readLine() {
     return input;
 }
 
+char readCharacter() {
+    string input = "";
+
+    while (true) {
+        getline(cin, input);
+        if (input.length() == 1)
+            return input[0];
+        else
+            cout << "This is not a single character. Enter again. ";
+    }
+}
+
 int main() {
     // Test of readLine() function
     cout << readLine();
+
+    // Test of readCharacter() function
+    cout << readCharacter();
 
     return 0;
 }
