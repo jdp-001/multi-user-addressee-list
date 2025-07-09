@@ -36,3 +36,8 @@ desktop.ini
 # =============================
 MultiUserAddresseeList.mm
 Users.txt
+
+# =============================
+# Ignored dependency file
+# =============================
+MultiUserAddresseeList.depend
