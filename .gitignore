@@ -31,3 +31,8 @@ desktop.ini
 *.swp
 *.bak
 
+# =============================
+# Ignored user files
+# =============================
+MultiUserAddresseeList.mm
+Users.txt
