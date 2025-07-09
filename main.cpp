@@ -7,7 +7,15 @@
 
 using namespace std;
 
+string readLine() {
+    string input = "";
+    getline(cin, input);
+    return input;
+}
+
 int main() {
+    // Test of readLine() function
+    cout << readLine();
 
     return 0;
 }
