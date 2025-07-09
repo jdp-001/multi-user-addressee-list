@@ -61,16 +61,6 @@ int readIntNumber() {
     return number;
 }
 
-int main() {
-    // Test of readLine() function
-    cout << "Enter multiple characters: " << readLine() << endl;
-
-    // Test of readCharacter() function
-    cout << "Enter one character: " << readCharacter() << endl;
-
-    // Test of readIntNumber() function
-    cout << "Enter number: " << readIntNumber() << endl;
-
 void appendNewUserToUsersFile(User user, string filename) {
     fstream file;
     file.open(filename, ios::out | ios::app);
