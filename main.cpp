@@ -4,6 +4,8 @@
 // Author: Jaroslaw Dolinski
 
 #include <iostream>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -25,12 +27,31 @@ char readCharacter() {
     }
 }
 
+int readIntNumber() {
+    string input = "";
+    int number = 0;
+
+    while (true) {
+        getline(cin, input);
+        stringstream myStream(input);
+
+        if (myStream >> number)
+            break;
+
+        cout << "This is not a number. Enter again." << endl;
+    }
+    return number;
+}
+
 int main() {
     // Test of readLine() function
-    cout << readLine();
+    cout << "Enter multiple characters: " << readLine() << endl;
 
     // Test of readCharacter() function
-    cout << readCharacter();
+    cout << "Enter one character: " << readCharacter() << endl;
+
+    // Test of readIntNumber() function
+    cout << "Enter number: " << readIntNumber() << endl;
 
     return 0;
 }
