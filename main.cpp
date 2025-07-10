@@ -9,6 +9,7 @@
 #include <sstream>
 #include <string>
 #include <fstream>
+#include <conio.h>
 using namespace std;
 
 struct User {
@@ -179,11 +180,13 @@ void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
 }
 
 // Load Addressees of the currently logged user
-void loadAddressees(vector<Addressee>& addressees, int& numberOfAddressees, const int& idOfLoggedUser, string filename) {
+void loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, string filename) {
     fstream file;
     string line, id, userId, firstName, lastName, phone, email, address, dummy;
     int addresseeCounter = 0;
     Addressee addressee;
+
+    addressees.clear();
 
     file.open(filename, ios::in);
     if (file.good()) {
@@ -211,14 +214,27 @@ void loadAddressees(vector<Addressee>& addressees, int& numberOfAddressees, cons
                 addresseeCounter++; // ???
             }
         }
-        numberOfAddressees = addresseeCounter; // also sets numberOfAddressees!
         file.close();
+        //return addresseeCounter; // also sets numberOfAddressees!
+    } else {
+        //cout << "FILE IS NOT GOOD" << endl;
     }
 }
 
 void waitForKeyPress() {
-    cout << "\nPress any key to continue...";
-    cin.get();
+    cout << "Press any key to continue...";
+    getch();
+}
+
+void showOneAddressee(const vector <Addressee>& addressees, int id) {
+    //cout << endl;
+    cout << "Id:         " << addressees[id].id << endl;
+    cout << "First name: " << addressees[id].firstName << endl;
+    cout << "Last name:  " << addressees[id].lastName << endl;
+    cout << "Phone:      " << addressees[id].phone << endl;
+    cout << "Email:      " << addressees[id].email << endl;
+    cout << "Address:    " << addressees[id].address << endl;
+    //cout << endl;
 }
 
 void addAddressee(vector <Addressee>& addressees) {
@@ -231,6 +247,22 @@ void searchAddresseeByLastName(const vector <Addressee>& addressees) {
 }
 
 void showAllAddressees(const vector <Addressee>& addressees) {
+    int numberOfAddressees = addressees.size();
+    //cout << "Number of addressees = " << numberOfAddressees << endl;
+    if (numberOfAddressees == 0) {
+        cout << "Empty/corrupted database. Enter your first record." << endl;
+        waitForKeyPress();
+    } else {
+        system("cls");
+        cout << "    >>>> ADDRESSEES <<<<   " << endl;
+        cout << "---------------------------" << endl;
+
+        for (int i = 0; i < numberOfAddressees; i++) {
+            showOneAddressee(addressees, i);
+            cout << "---------------------------" << endl;
+        }
+    }
+    waitForKeyPress();
 }
 
 void removeAddressee(vector <Addressee>& addressees, string filename) {
@@ -244,6 +276,7 @@ int main() {
     vector<Addressee> addressees;
     int idOfLoggedUser = 0; // > 0 means somebody is logged in, 0 means nobody is logged in and Interface menu is active
     int numberOfUsers = 0;
+    int numberOfAddressees = 0;
     char choice;
     string filename = "Users.txt";
 
@@ -287,6 +320,8 @@ int main() {
             cout << "---------------------------" << endl;
             cout << "Your choice: ";
             cin >> choice;
+
+            loadAddressees(addressees, idOfLoggedUser, "Addressees.txt");
 
             switch (choice) {
             case '1':
