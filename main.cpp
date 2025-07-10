@@ -19,7 +19,7 @@ struct User {
 
 struct Addressee {
     int id;
-    int userId;
+    //int userId;
     string firstName;
     string lastName;
     string phone;
@@ -174,6 +174,44 @@ void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
             userCounter++;
         }
         numberOfUsers = userCounter; // also sets numberOfAddressees!
+        file.close();
+    }
+}
+
+// Load Addressees of the currently logged user
+void loadAddressees(vector<Addressee>& addressees, int& numberOfAddressees, const int& idOfLoggedUser, string filename) {
+    fstream file;
+    string line, id, userId, firstName, lastName, phone, email, address, dummy;
+    int addresseeCounter = 0;
+    Addressee addressee;
+
+    file.open(filename, ios::in);
+    if (file.good()) {
+        while (getline(file, line)) { // Loading database
+            istringstream iss(line);
+
+            getline(iss, id, '|');
+            getline(iss, userId, '|');
+            getline(iss, firstName, '|');
+            getline(iss, lastName, '|');
+            getline(iss, phone, '|');
+            getline(iss, email, '|');
+            getline(iss, address, '|');
+            getline(iss, dummy, '|'); // ignoring end '|'
+
+            if (stoi(userId) == idOfLoggedUser) {
+                addressee.id = stoi(id);
+                addressee.firstName = firstName;
+                addressee.lastName = lastName;
+                addressee.phone = phone;
+                addressee.email = email;
+                addressee.address = address;
+
+                addressees.push_back(addressee);
+                addresseeCounter++; // ???
+            }
+        }
+        numberOfAddressees = addresseeCounter; // also sets numberOfAddressees!
         file.close();
     }
 }
