@@ -216,6 +216,11 @@ void loadAddressees(vector<Addressee>& addressees, int& numberOfAddressees, cons
     }
 }
 
+void waitForKeyPress() {
+    cout << "\nPress any key to continue...";
+    cin.get();
+}
+
 void addAddressee(vector <Addressee>& addressees) {
 }
 
