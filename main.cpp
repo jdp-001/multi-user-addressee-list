@@ -263,7 +263,7 @@ void appendNewAddresseeToAddresseesFile(Addressee addressee, int idOfLoggedUser,
     }
 }
 
-void addAddressee(vector <Addressee>& addressees, int idOfLoggedUser, string filename) {
+void addAddressee(vector <Addressee>& addressees, int idOfLoggedUser, string filename, int lastAddresseeId) {
 
     Addressee addressee;
     //string filename;
@@ -271,7 +271,8 @@ void addAddressee(vector <Addressee>& addressees, int idOfLoggedUser, string fil
     if (addressees.empty())
         addressee.id = 1;
     else
-        addressee.id = addressees.back().id + 1; //!!!!!!!!!!!!!!
+        //addressee.id = addressees.back().id + 1; //!!!!!!!!!!!!!!
+        addressee.id = lastAddresseeId + 1; //!!!!!!!!!!!!!!
 
     cout << "Id: " << addressee.id << endl;
 
@@ -382,7 +383,7 @@ int main() {
 
             switch (choice) {
             case '1':
-                addAddressee(addressees, idOfLoggedUser, addresseeFilename);
+                addAddressee(addressees, idOfLoggedUser, addresseeFilename, lastAddresseeId);
                 break;
             case '2':
                 searchAddresseeByFirstName(addressees);
