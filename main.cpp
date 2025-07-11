@@ -297,6 +297,21 @@ void addAddressee(vector <Addressee>& addressees, int idOfLoggedUser, string fil
 }
 
 void searchAddresseeByFirstName(const vector <Addressee>& addressees) {
+    string firstName;
+
+    cout << "Enter the first name of the person whose data is to be displayed. ";
+    firstName = readLine();
+    bool found = false;
+
+    for (int i = 0; i < addressees.size(); i++) {
+        if (addressees[i].firstName == firstName) {
+            showOneAddressee(addressees, i);
+            found = true;
+        }
+    }
+
+    if (!found) cout << "First name " << firstName << " not found" << endl;
+    waitForKeyPress();
 }
 
 void searchAddresseeByLastName(const vector <Addressee>& addressees) {
