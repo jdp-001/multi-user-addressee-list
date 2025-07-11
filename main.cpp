@@ -180,7 +180,7 @@ void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
 }
 
 // Load Addressees of the currently logged user
-void loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, string filename) {
+int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, string filename) {
     fstream file;
     string line, id, userId, firstName, lastName, phone, email, address, dummy;
     int addresseeCounter = 0;
