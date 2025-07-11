@@ -307,7 +307,7 @@ void showAllAddressees(const vector <Addressee>& addressees) {
     //cout << "Number of addressees = " << numberOfAddressees << endl;
     if (numberOfAddressees == 0) {
         cout << "Empty/corrupted database. Enter your first record." << endl;
-        waitForKeyPress();
+        //waitForKeyPress();
     } else {
         system("cls");
         cout << "    >>>> ADDRESSEES <<<<   " << endl;
