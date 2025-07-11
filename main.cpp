@@ -30,6 +30,7 @@ struct Addressee {
 
 string readLine() {
     string input = "";
+    cin.ignore(); // Clean input buffer
     getline(cin, input);
     return input;
 }
@@ -237,8 +238,60 @@ void showOneAddressee(const vector <Addressee>& addressees, int id) {
     //cout << endl;
 }
 
-void addAddressee(vector <Addressee>& addressees) {
+// TO DO START
+void appendNewAddresseeToAddresseesFile(Addressee addressee, int idOfLoggedUser, string filename) {
+    fstream file;
+    file.open(filename, ios::out | ios::app);
+
+    if (file.good()) {
+        file << addressee.id << "|";
+        file << idOfLoggedUser << "|";
+        file << addressee.firstName << "|";
+        file << addressee.lastName << "|";
+        file << addressee.phone << "|";
+        file << addressee.email << "|";
+        file << addressee.address << "|" << endl;
+        file.close();
+
+        cout << "File updated" << endl;
+        Sleep(1500);
+    } else {
+        cout << "failed to open addressee file and save the data in it" << endl;
+        Sleep(1500);
+    }
 }
+
+void addAddressee(vector <Addressee>& addressees, int idOfLoggedUser, string filename) {
+
+    Addressee addressee;
+    //string filename;
+
+    if (addressees.empty())
+        addressee.id = 1;
+    else
+        addressee.id = addressees.back().id + 1; //!!!!!!!!!!!!!!
+
+    cout << "Id: " << addressee.id << endl;
+
+    cout << "Enter first name: ";
+    addressee.firstName = readLine();
+
+    cout << "Enter last name: ";
+    addressee.lastName = readLine();
+
+    cout << "Enter phone number: ";
+    addressee.phone = readLine();
+
+    cout << "Enter email: ";
+    addressee.email = readLine();
+
+    cout << "Enter address: ";
+    addressee.address = readLine();
+
+    addressees.push_back(addressee);
+    appendNewAddresseeToAddresseesFile(addressee, idOfLoggedUser, filename);
+}
+// THE END
 
 void searchAddresseeByFirstName(const vector <Addressee>& addressees) {
 }
@@ -279,6 +332,7 @@ int main() {
     int numberOfAddressees = 0;
     char choice;
     string filename = "Users.txt";
+    string addresseeFilename = "Addressees.txt";
 
     loadUsers(users, numberOfUsers, filename); // numberOfUsers necessary?
 
@@ -325,7 +379,7 @@ int main() {
 
             switch (choice) {
             case '1':
-                addAddressee(addressees);
+                addAddressee(addressees, idOfLoggedUser, addresseeFilename);
                 break;
             case '2':
                 searchAddresseeByFirstName(addressees);
