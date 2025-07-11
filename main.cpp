@@ -183,7 +183,8 @@ void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
 int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, string filename) {
     fstream file;
     string line, id, userId, firstName, lastName, phone, email, address, dummy;
-    int addresseeCounter = 0;
+    //int addresseeCounter = 0;
+    int lastAddresseeId = 0; //!!!! Verify !!!!
     Addressee addressee;
 
     addressees.clear();
@@ -334,6 +335,7 @@ int main() {
     char choice;
     string filename = "Users.txt";
     string addresseeFilename = "Addressees.txt";
+    int lastAddresseeId = 0; // !!!! Verify !!!!
 
     loadUsers(users, numberOfUsers, filename); // numberOfUsers necessary?
 
