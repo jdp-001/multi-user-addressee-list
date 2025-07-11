@@ -269,7 +269,6 @@ void appendNewAddresseeToAddresseesFile(Addressee addressee, int idOfLoggedUser,
 void addAddressee(vector <Addressee>& addressees, int idOfLoggedUser, string filename, int lastAddresseeId) {
 
     Addressee addressee;
-    //string filename;
 
     if (addressees.empty())
         addressee.id = 1;
