@@ -211,11 +211,13 @@ int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, str
                 addressee.address = address;
 
                 addressees.push_back(addressee);
-                addresseeCounter++; // ???
+                //addresseeCounter++; // ???
+                lastAddresseeId = addressee.id;
             }
         }
         file.close();
         //return addresseeCounter; // also sets numberOfAddressees!
+        return lastAddresseeId;
     } else {
         //cout << "FILE IS NOT GOOD" << endl;
     }
@@ -374,7 +376,7 @@ int main() {
             cout << "Your choice: ";
             cin >> choice;
 
-            loadAddressees(addressees, idOfLoggedUser, "Addressees.txt");
+            lastAddresseeId = loadAddressees(addressees, idOfLoggedUser, "Addressees.txt");
 
             switch (choice) {
             case '1':
