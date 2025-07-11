@@ -30,7 +30,6 @@ struct Addressee {
 
 string readLine() {
     string input = "";
-    cin.ignore(); // Clean input buffer
     getline(cin, input);
     return input;
 }
