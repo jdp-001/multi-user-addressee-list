@@ -334,11 +334,11 @@ int main() {
     int numberOfUsers = 0;
     int numberOfAddressees = 0;
     char choice;
-    string filename = "Users.txt";
-    string addresseeFilename = "Addressees.txt";
+    string usersFilename = "Users.txt";
+    string addresseesFilename = "Addressees.txt";
     int lastAddresseeId = 0; // !!!! Verify !!!!
 
-    loadUsers(users, numberOfUsers, filename); // numberOfUsers necessary?
+    loadUsers(users, numberOfUsers, usersFilename); // numberOfUsers necessary?
 
     while(true) {
         if (idOfLoggedUser == 0) { // If nobody is logged in
@@ -355,7 +355,7 @@ int main() {
             cin >> choice;
 
             if (choice == '1') {
-                numberOfUsers = signUp(users, filename);
+                numberOfUsers = signUp(users, usersFilename);
             } else if (choice == '2') {
                 idOfLoggedUser = logIn(users);
             } else if (choice == '9') {
@@ -383,7 +383,7 @@ int main() {
 
             switch (choice) {
             case '1':
-                addAddressee(addressees, idOfLoggedUser, addresseeFilename, lastAddresseeId);
+                addAddressee(addressees, idOfLoggedUser, addresseesFilename, lastAddresseeId);
                 break;
             case '2':
                 searchAddresseeByFirstName(addressees);
@@ -395,10 +395,10 @@ int main() {
                 showAllAddressees(addressees);
                 break;
             case '5':
-                removeAddressee(addressees, filename);
+                removeAddressee(addressees, addresseesFilename);
                 break;
             case '6':
-                editAddressee(addressees, filename);
+                editAddressee(addressees, addresseesFilename);
                 break;
             case '7':
                 changePassword(users, idOfLoggedUser);
