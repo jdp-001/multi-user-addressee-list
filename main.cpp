@@ -244,7 +244,6 @@ void showOneAddressee(const vector <Addressee>& addressees, int id) {
     //cout << endl;
 }
 
-// TO DO START
 void appendNewAddresseeToAddresseesFile(Addressee addressee, int idOfLoggedUser, string filename) {
     fstream file;
     file.open(filename, ios::out | ios::app);
@@ -275,8 +274,7 @@ void addAddressee(vector <Addressee>& addressees, int idOfLoggedUser, string fil
     if (addressees.empty())
         addressee.id = 1;
     else
-        //addressee.id = addressees.back().id + 1; //!!!!!!!!!!!!!!
-        addressee.id = lastAddresseeId + 1; //!!!!!!!!!!!!!!
+        addressee.id = lastAddresseeId + 1;
 
     cout << "Id: " << addressee.id << endl;
 
@@ -298,7 +296,6 @@ void addAddressee(vector <Addressee>& addressees, int idOfLoggedUser, string fil
     addressees.push_back(addressee);
     appendNewAddresseeToAddresseesFile(addressee, idOfLoggedUser, filename);
 }
-// THE END
 
 void searchAddresseeByFirstName(const vector <Addressee>& addressees) {
 }
