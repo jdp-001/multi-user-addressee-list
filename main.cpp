@@ -10,6 +10,8 @@
 #include <string>
 #include <fstream>
 #include <conio.h>
+
+#include <limits>
 using namespace std;
 
 struct User {
@@ -380,6 +382,8 @@ int main() {
             cout << "---------------------------" << endl;
             cout << "Your choice: ";
             cin >> choice;
+
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Cleaning buffer !
 
             lastAddresseeId = loadAddressees(addressees, idOfLoggedUser, "Addressees.txt");
 
