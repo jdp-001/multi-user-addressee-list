@@ -203,6 +203,8 @@ int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, str
             getline(iss, address, '|');
             getline(iss, dummy, '|'); // ignoring end '|'
 
+            lastAddresseeId = stoi(id);
+
             if (stoi(userId) == idOfLoggedUser) {
                 addressee.id = stoi(id);
                 addressee.firstName = firstName;
@@ -213,7 +215,7 @@ int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, str
 
                 addressees.push_back(addressee);
                 //addresseeCounter++; // ???
-                lastAddresseeId = addressee.id;
+
             }
         }
         file.close();
