@@ -352,6 +352,19 @@ void showAllAddressees(const vector <Addressee>& addressees) {
 }
 
 // ******************* UNDER DEVELOPMENT - START *******************
+
+int findAddresseeIndex(const vector <Addressee>& addressees, int numberOfAdressees, int id) {
+    int result = -1;
+
+    for (int i = 0; i < numberOfAdressees; i++) {
+        if (addressees[i].id == id) {
+            result = i;
+            break;
+        }
+    }
+    return result;
+}
+
 void removeAddressee(vector <Addressee>& addressees, string filename) {
     int numberOfAddressees = addressees.size();
     int id;
