@@ -351,8 +351,43 @@ void showAllAddressees(const vector <Addressee>& addressees) {
     waitForKeyPress();
 }
 
+// ******************* UNDER DEVELOPMENT - START *******************
 void removeAddressee(vector <Addressee>& addressees, string filename) {
+    int numberOfAddressees = addressees.size();
+    int id;
+    int index;
+    char character;
+
+    cout << "Enter the id of the person you want to remove from the list. ";
+    id = readIntNumber();
+    index = findAddresseeIndex(addressees, numberOfAddressees, id);
+
+    if (index > -1) {
+        showOneAddressee(addressees, index);
+        cout << "\nAre you sure you want to remove this addressee? ";
+        cout << "\nPress Y or y and the Enter key to delete.";
+        cout << "\nPress N or n and the Enter key to not delete. ";
+
+        do {
+            character = readCharacter();
+
+            if (character == 'Y' || character == 'y') {
+                addressees.erase(addressees.begin() + index);
+                numberOfAddressees--;
+                cout << "Addressee deleted" << endl;
+                saveData(addressees, filename);
+                break;
+            } else if (character == 'N' || character == 'n')
+                break;
+            else
+                cout << "Invalid key. Y / y to delete, N / n to not." << endl;
+        } while (character != 'T' && character != 't' && character != 'N'
+                 && character != 'n');
+    } else
+        cout << "Incorrect id" << endl;
+        Sleep(1500);
 }
+//   ******************* UNDER DEVELOPMENT - END  *******************
 
 void editAddressee(vector <Addressee>& addressees, string filename) {
 }
