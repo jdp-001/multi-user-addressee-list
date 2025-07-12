@@ -388,7 +388,7 @@ void removeAddressee(vector <Addressee>& addressees, string filename) {
                 addressees.erase(addressees.begin() + index);
                 numberOfAddressees--;
                 cout << "Addressee deleted" << endl;
-                saveData(addressees, filename);
+                //saveData(addressees, filename);
                 break;
             } else if (character == 'N' || character == 'n')
                 break;
