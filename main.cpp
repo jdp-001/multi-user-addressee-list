@@ -394,7 +394,7 @@ void removeAddressee(vector <Addressee>& addressees, string filename) {
                 break;
             else
                 cout << "Invalid key. Y / y to delete, N / n to not." << endl;
-        } while (character != 'T' && character != 't' && character != 'N'
+        } while (character != 'Y' && character != 'y' && character != 'N'
                  && character != 'n');
     } else
         cout << "Incorrect id" << endl;
