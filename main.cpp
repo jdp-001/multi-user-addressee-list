@@ -353,6 +353,24 @@ void showAllAddressees(const vector <Addressee>& addressees) {
 
 // ******************* UNDER DEVELOPMENT - START *******************
 
+void saveData(vextor <Addressee>& addressees, int index, string addresseessFilename) {
+//void saveData(const vector <Addressee>& addressees, string filename) {
+    fstream file;
+    int numberOfAddressees = addressees.size();
+
+    file.open(filename, ios::out);
+
+    for (int addresseeCounter = 0; addresseeCounter < numberOfAddressees; addresseeCounter++) {
+        file << to_string(addressees[addresseeCounter].id) << "|";
+        file << addressees[addresseeCounter].firstName << "|";
+        file << addressees[addresseeCounter].lastName << "|";
+        file << addressees[addresseeCounter].phone << "|";
+        file << addressees[addresseeCounter].email << "|";
+        file << addressees[addresseeCounter].address << "|" << endl;
+    }
+    file.close();
+}
+
 int findAddresseeIndex(const vector <Addressee>& addressees, int numberOfAdressees, int id) {
     int result = -1;
 
@@ -388,7 +406,7 @@ void removeAddressee(vector <Addressee>& addressees, string filename) {
                 addressees.erase(addressees.begin() + index);
                 numberOfAddressees--;
                 cout << "Addressee deleted" << endl;
-                //saveData(addressees, filename);
+                saveData(addressees, index, addresseessFilename);
                 break;
             } else if (character == 'N' || character == 'n')
                 break;
