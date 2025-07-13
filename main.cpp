@@ -617,7 +617,6 @@ int main() {
 
             switch (choice) {
             case '1':
-                //cout << "lastAddresseeId = " << lastAddresseeId << endl; // TEST
                 addAddressee(addressees, idOfLoggedUser, addresseesFilename, lastAddresseeId);
                 break;
             case '2':
