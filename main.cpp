@@ -181,7 +181,7 @@ void changePassword(vector<User>& users, const int idOfLoggedUser, const string&
     }
 }
 
-void loadUsers(vector<User>& users, string filename) {
+void loadUsers(vector<User>& users, const string& filename) {
     fstream file;
     string line, userId, username, password, dummy;
     User user;
