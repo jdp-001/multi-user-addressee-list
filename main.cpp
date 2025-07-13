@@ -290,7 +290,7 @@ void appendNewAddresseeToAddresseesFile(const Addressee& addressee, const int id
     }
 }
 
-void addAddressee(vector <Addressee>& addressees, int idOfLoggedUser, string filename, int lastAddresseeId) {
+void addAddressee(vector <Addressee>& addressees, const int idOfLoggedUser, const string& filename, const int lastAddresseeId) {
 
     Addressee addressee;
 
