@@ -1,6 +1,6 @@
 // Program name: MultiUserAddresseeList (vectors applied)
 // Status: Code of feature/user-input branch
-// Date: 09.07.2025
+// Date: 13.07.2025
 // Author: Jaroslaw Dolinski
 
 #include <iostream>
@@ -322,7 +322,7 @@ void searchAddresseeByFirstName(const vector <Addressee>& addressees) {
     firstName = readLine();
     bool found = false;
 
-    for (int i = 0; i < addressees.size(); i++) {
+    for (size_t i = 0; i < addressees.size(); i++) {
         if (addressees[i].firstName == firstName) {
             showOneAddressee(addressees, i);
             found = true;
@@ -340,7 +340,7 @@ void searchAddresseeByLastName(const vector <Addressee>& addressees) {
     lastName = readLine();
     bool found = false;
 
-    for (int i = 0; i < addressees.size(); i++) {
+    for (size_t i = 0; i < addressees.size(); i++) {
         if (addressees[i].lastName == lastName) {
             showOneAddressee(addressees, i);
             found = true;
@@ -457,9 +457,10 @@ void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, 
                 cout << "Invalid key. Y / y to delete, N / n to not." << endl;
         } while (character != 'Y' && character != 'y' && character != 'N'
                  && character != 'n');
-    } else
+    } else {
         cout << "Incorrect id" << endl;
         Sleep(1500);
+    }
 }
 // ******************* END saveDataAfterRemovingAddressee findAddresseeIndex removeAddressee *******************
 
@@ -571,7 +572,7 @@ int main() {
     vector<User> users;
     vector<Addressee> addressees;
     int idOfLoggedUser = 0; // > 0 means somebody is logged in, 0 means nobody is logged in and Interface menu is active
-    int numberOfAddressees = 0;
+    //int numberOfAddressees = 0;
     char choice;
     string usersFilename = "Users.txt";
     string addresseesFilename = "Addressees.txt";
