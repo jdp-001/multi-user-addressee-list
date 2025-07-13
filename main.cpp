@@ -448,13 +448,14 @@ void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, 
 // ******************* START editAddressee *******************
 
 void showEditOptions() {
-    cout << "EDIT OPTIONS" << endl;
-    cout << "------------" << endl;
+    cout << "      >>>> EDIT <<<<       " << endl;
+    cout << "---------------------------" << endl;
     cout << "1. First name" << endl;
     cout << "2. Last name" << endl;
     cout << "3. Phone number" << endl;
     cout << "4. Email" << endl;
     cout << "5. Address" << endl;
+    cout << "---------------------------" << endl;
     cout << "6. Return to Menu" << endl;
     cout << endl;
     cout << "Enter your choice (1-6 + Enter) ";
