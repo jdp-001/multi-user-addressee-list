@@ -391,7 +391,7 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
             }
         }
     } else {
-        cout << "FILE IS NOT GOOD" << endl;
+        cout << "File is not good" << endl;
     }
     addresseesFile.close();
     temporaryFile.close();
@@ -556,7 +556,7 @@ void editAddressee(vector <Addressee>& addressees, const string& addresseesFilen
             }
         }
     } else {
-        cout << "Incorrect id." << endl;
+        cout << "Incorrect id" << endl;
         waitForKeyPress();
     }
 }
