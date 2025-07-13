@@ -157,7 +157,7 @@ void changePassword(vector<User>& users, int idOfLoggedUser) {
 void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
     fstream file;
     string line, userId, username, password, dummy;
-    int userCounter = 0;
+    //int userCounter = 0;
     User user;
 
     file.open(filename, ios::in);
@@ -175,9 +175,9 @@ void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
             user.password = password;
 
             users.push_back(user);
-            userCounter++;
+            //userCounter++;
         }
-        numberOfUsers = userCounter; // also sets numberOfAddressees!
+        //numberOfUsers = userCounter; // also sets numberOfAddressees!
         file.close();
     }
 }
