@@ -572,7 +572,6 @@ int main() {
     vector<User> users;
     vector<Addressee> addressees;
     int idOfLoggedUser = 0; // > 0 means somebody is logged in, 0 means nobody is logged in and Interface menu is active
-    //int numberOfAddressees = 0;
     char choice;
     string usersFilename = "Users.txt";
     string addresseesFilename = "Addressees.txt";
