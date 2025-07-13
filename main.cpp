@@ -139,8 +139,28 @@ int logIn(vector<User>& users) {
     return 0;
 }
 
+// Save users file
+void saveUsersFile(vector<User>& users, string usersFilename) {
+    fstream usersFile;
+    int numberOfUsers = users.size();
+    usersFile.open(usersFilename, ios::out);
+    if (usersFile.good()) {
+        for (int i = 0; i < numberOfUsers; i++) {
+            usersFile << users[i].id << "|";
+            usersFile << users[i].username << "|";
+            usersFile << users[i].password << "|" << endl;
+        }
+        usersFile.close();
+        cout << "File saved" << endl;
+        Sleep(1500);
+    } else {
+        cout << "Failed to open the file and save the data in it" << endl;
+        Sleep(1500);
+    }
+}
+
 // Change the password of the logged in user
-void changePassword(vector<User>& users, int idOfLoggedUser) {
+void changePassword(vector<User>& users, int idOfLoggedUser, string usersFilename) {
     string newPassword;
     int numberOfUsers = users.size();
     cout << "Enter new password: ";
@@ -150,6 +170,7 @@ void changePassword(vector<User>& users, int idOfLoggedUser) {
             users[idOfLoggedUser - 1].password = newPassword;
             cout << "Password changed" << endl;
             Sleep(1500);
+            saveUsersFile(users, usersFilename);
         }
     }
 }
@@ -621,7 +642,7 @@ int main() {
                 editAddressee(addressees, addresseesFilename, idOfLoggedUser);
                 break;
             case '7':
-                changePassword(users, idOfLoggedUser);
+                changePassword(users, idOfLoggedUser, usersFilename);
                 Sleep(1500); // To delete
                 break;
             case '8':
