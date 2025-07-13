@@ -485,7 +485,7 @@ string convertAddresseeToLine(const Addressee& addressee, const int idOfLoggedUs
            addressee.address + "|";
 }
 
-void editAddressee(vector <Addressee>& addressees, string addresseesFilename, int idOfLoggedUser) {
+void editAddressee(vector <Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
     int id;
     int index;
     char choiceFromEditOptions = '0';
