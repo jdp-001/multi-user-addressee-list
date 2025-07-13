@@ -145,7 +145,7 @@ int logIn(vector<User>& users) {
 }
 
 // Save users file
-void saveUsersFile(vector<User>& users, string usersFilename) {
+void saveUsersFile(vector<User>& users, const string& usersFilename) {
     fstream usersFile;
     int numberOfUsers = users.size();
     usersFile.open(usersFilename, ios::out);
