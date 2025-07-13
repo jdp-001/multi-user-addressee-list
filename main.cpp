@@ -448,7 +448,7 @@ void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, 
 // ******************* START editAddressee *******************
 
 void showEditOptions() {
-    cout << "      >>>> EDIT <<<<       " << endl;
+    cout << "    >>>> EDIT MENU <<<<    " << endl;
     cout << "---------------------------" << endl;
     cout << "1. First name" << endl;
     cout << "2. Last name" << endl;
@@ -457,8 +457,8 @@ void showEditOptions() {
     cout << "5. Address" << endl;
     cout << "---------------------------" << endl;
     cout << "6. Return to Menu" << endl;
-    cout << endl;
-    cout << "Enter your choice (1-6 + Enter) ";
+    cout << "---------------------------" << endl;
+    cout << "Your choice: ";
 }
 
 string convertAddresseeToLine(const Addressee& addressee, int idOfLoggedUser) {
@@ -484,6 +484,7 @@ void editAddressee(vector <Addressee>& addressees, string addresseesFilename, in
 
     if (index > -1) {
         cout << endl;
+        system("cls");
         cout << "Data of the person to edit" << endl;
         showOneAddressee(addressees, index);
         cout << endl;
