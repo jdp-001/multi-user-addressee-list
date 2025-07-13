@@ -294,10 +294,7 @@ void addAddressee(vector <Addressee>& addressees, const int idOfLoggedUser, cons
 
     Addressee addressee;
 
-    if (addressees.empty())
-        addressee.id = 1;
-    else
-        addressee.id = lastAddresseeId + 1;
+    addressee.id = lastAddresseeId + 1;
 
     cout << "Id: " << addressee.id << endl;
 
@@ -478,7 +475,7 @@ void showEditOptions() {
     cout << "Your choice: ";
 }
 
-string convertAddresseeToLine(const Addressee& addressee, int idOfLoggedUser) {
+string convertAddresseeToLine(const Addressee& addressee, const int idOfLoggedUser) {
     return to_string(addressee.id) + "|" +
            to_string(idOfLoggedUser) + "|" +
            addressee.firstName + "|" +
@@ -620,6 +617,7 @@ int main() {
 
             switch (choice) {
             case '1':
+                //cout << "lastAddresseeId = " << lastAddresseeId << endl; // TEST
                 addAddressee(addressees, idOfLoggedUser, addresseesFilename, lastAddresseeId);
                 break;
             case '2':
