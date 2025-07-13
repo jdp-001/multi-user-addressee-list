@@ -209,7 +209,7 @@ void loadUsers(vector<User>& users, const string& filename) {
 }
 
 // Load Addressees of the currently logged user
-int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, string filename) {
+int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, const string& filename) {
     fstream file;
     string line, id, userId, firstName, lastName, phone, email, address, dummy;
     int lastAddresseeId = 0;
