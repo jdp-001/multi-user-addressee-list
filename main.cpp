@@ -367,12 +367,6 @@ void saveDataAfterRemovingAddressee(int idOfLoggedUser, int removedAddresseeId, 
 
             getline(iss, id, '|');
             getline(iss, userId, '|');
-            //getline(iss, firstName, '|');
-            //getline(iss, lastName, '|');
-            //getline(iss, phone, '|');
-            //getline(iss, email, '|');
-            //getline(iss, address, '|');
-            //getline(iss, dummy, '|'); // ignoring end '|'
 
             if (!((stoi(userId) == idOfLoggedUser) && (stoi(id) == removedAddresseeId))) {
 
