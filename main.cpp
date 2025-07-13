@@ -154,7 +154,7 @@ void changePassword(vector<User>& users, int idOfLoggedUser) {
     }
 }
 
-void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
+void loadUsers(vector<User>& users, string filename) {
     fstream file;
     string line, userId, username, password, dummy;
     //int userCounter = 0;
@@ -177,7 +177,6 @@ void loadUsers(vector<User>& users, int& numberOfUsers, string filename) {
             users.push_back(user);
             //userCounter++;
         }
-        //numberOfUsers = userCounter; // also sets numberOfAddressees!
         file.close();
     }
 }
@@ -217,8 +216,6 @@ int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, str
                 addressee.address = address;
 
                 addressees.push_back(addressee);
-                //addresseeCounter++; // ???
-
             }
         }
         file.close();
@@ -553,14 +550,13 @@ int main() {
     vector<User> users;
     vector<Addressee> addressees;
     int idOfLoggedUser = 0; // > 0 means somebody is logged in, 0 means nobody is logged in and Interface menu is active
-    int numberOfUsers = 0;
     int numberOfAddressees = 0;
     char choice;
     string usersFilename = "Users.txt";
     string addresseesFilename = "Addressees.txt";
     int lastAddresseeId = 0; // !!!! Verify !!!!
 
-    loadUsers(users, numberOfUsers, usersFilename); // numberOfUsers necessary?
+    loadUsers(users, usersFilename);
 
     while(true) {
         if (idOfLoggedUser == 0) { // If nobody is logged in
@@ -577,7 +573,7 @@ int main() {
             cin >> choice;
 
             if (choice == '1') {
-                numberOfUsers = signUp(users, usersFilename);
+                signUp(users, usersFilename);
             } else if (choice == '2') {
                 idOfLoggedUser = logIn(users);
             } else if (choice == '9') {
