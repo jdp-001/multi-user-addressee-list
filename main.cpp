@@ -486,6 +486,7 @@ void editAddressee(vector <Addressee>& addressees, string addresseesFilename, in
         cout << endl;
         system("cls");
         cout << "Data of the person to edit" << endl;
+        cout << "---------------------------" << endl;
         showOneAddressee(addressees, index);
         cout << endl;
         showEditOptions();
