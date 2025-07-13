@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <conio.h>
+#include <cstdio> // for remove()
 
 #include <limits>
 using namespace std;
@@ -353,23 +354,52 @@ void showAllAddressees(const vector <Addressee>& addressees) {
 
 // ******************* UNDER DEVELOPMENT - START *******************
 
-void saveData(vextor <Addressee>& addressees, int index, string addresseessFilename) {
-//void saveData(const vector <Addressee>& addressees, string filename) {
-    fstream file;
-    int numberOfAddressees = addressees.size();
+void saveDataAfterRemovingAddressee(int idOfLoggedUser, int removedAddresseeId, string addresseesFilename) {
+    fstream addresseesFile, temporaryFile;
+    string line, id, userId, firstName, lastName, phone, email, address, dummy;
 
-    file.open(filename, ios::out);
+    addresseesFile.open(addresseesFilename, ios::in);
+    temporaryFile.open("Temporary.txt", ios::out);
 
-    for (int addresseeCounter = 0; addresseeCounter < numberOfAddressees; addresseeCounter++) {
-        file << to_string(addressees[addresseeCounter].id) << "|";
-        file << addressees[addresseeCounter].firstName << "|";
-        file << addressees[addresseeCounter].lastName << "|";
-        file << addressees[addresseeCounter].phone << "|";
-        file << addressees[addresseeCounter].email << "|";
-        file << addressees[addresseeCounter].address << "|" << endl;
+    if (addresseesFile.good()) {
+        while (getline(addresseesFile, line)) { // Loading database
+            istringstream iss(line);
+
+            getline(iss, id, '|');
+            getline(iss, userId, '|');
+            //getline(iss, firstName, '|');
+            //getline(iss, lastName, '|');
+            //getline(iss, phone, '|');
+            //getline(iss, email, '|');
+            //getline(iss, address, '|');
+            //getline(iss, dummy, '|'); // ignoring end '|'
+
+            if (!((stoi(userId) == idOfLoggedUser) && (stoi(id) == removedAddresseeId))) {
+
+            temporaryFile << line << endl;
+            }
+        }
+    } else {
+        cout << "FILE IS NOT GOOD" << endl;
     }
-    file.close();
+    addresseesFile.close();
+    temporaryFile.close();
+
+    if (remove(addresseesFilename.c_str()) == 0) {
+        cout << "File deleted" << endl;
+    } else {
+        perror("Error while deleting file");
+    }
+
+    int result = rename("Temporary.txt", addresseesFilename.c_str());
+
+    if (result == 0) {
+        cout << "File renamed successfully" << endl;
+    } else {
+        perror("Error while renaming file");
+    }
 }
+
 
 int findAddresseeIndex(const vector <Addressee>& addressees, int numberOfAdressees, int id) {
     int result = -1;
@@ -383,7 +413,7 @@ int findAddresseeIndex(const vector <Addressee>& addressees, int numberOfAdresse
     return result;
 }
 
-void removeAddressee(vector <Addressee>& addressees, string filename) {
+void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, int idOfLoggedUser) {
     int numberOfAddressees = addressees.size();
     int id;
     int index;
@@ -406,7 +436,7 @@ void removeAddressee(vector <Addressee>& addressees, string filename) {
                 addressees.erase(addressees.begin() + index);
                 numberOfAddressees--;
                 cout << "Addressee deleted" << endl;
-                saveData(addressees, index, addresseessFilename);
+                saveDataAfterRemovingAddressee(idOfLoggedUser, id, addresseesFilename);
                 break;
             } else if (character == 'N' || character == 'n')
                 break;
@@ -493,7 +523,7 @@ int main() {
                 showAllAddressees(addressees);
                 break;
             case '5':
-                removeAddressee(addressees, addresseesFilename);
+                removeAddressee(addressees, addresseesFilename, idOfLoggedUser);
                 break;
             case '6':
                 editAddressee(addressees, addresseesFilename);
