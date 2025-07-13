@@ -259,7 +259,7 @@ void waitForKeyPress() {
     getch();
 }
 
-void showOneAddressee(const vector <Addressee>& addressees, int id) {
+void showOneAddressee(const vector <Addressee>& addressees, const int id) {
     cout << "Id:         " << addressees[id].id << endl;
     cout << "First name: " << addressees[id].firstName << endl;
     cout << "Last name:  " << addressees[id].lastName << endl;
