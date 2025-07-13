@@ -109,7 +109,7 @@ int signUp(vector<User>& users, string filename) {
     users.push_back(newUser);
     cout << "Account created" << endl;
     appendNewUserToUsersFile(newUser, filename);
-    Sleep(1000);
+    Sleep(1500);
     return numberOfUsers + 1;
 }
 
@@ -128,7 +128,7 @@ int logIn(vector<User>& users) {
                 cin >> password;
                 if (password == users[i].password) {
                     cout << "You are logged in" << endl;
-                    Sleep(1000);
+                    Sleep(1500);
                     return users[i].id;
                 }
             }
