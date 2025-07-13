@@ -44,7 +44,7 @@ char readCharacter() {
         if (input.length() == 1)
             return input[0];
         else
-            cout << "This is not a single character. Enter again. ";
+            cout << "This is not a single character. Enter again: ";
     }
 }
 
@@ -59,7 +59,7 @@ int readIntNumber() {
         if (myStream >> number)
             break;
 
-        cout << "This is not a number. Enter again." << endl;
+        cout << "This is not a number. Enter again: ";
     }
     return number;
 }
@@ -77,7 +77,7 @@ void appendNewUserToUsersFile(User user, string filename) {
         cout << "File updated" << endl;
         Sleep(1500);
     } else {
-        cout << "failed to open the file and save the data in it" << endl;
+        cout << "Failed to open the file and save the data in it" << endl;
         Sleep(1500);
     }
 }
@@ -89,6 +89,7 @@ int signUp(vector<User>& users, string filename) {
     cout << "Enter username: ";
     cin >> username;
     int i = 0;
+
     while (i < numberOfUsers) {
         if (users[i].username == username) {
             cout << "Such username already exists. Enter another username: ";
@@ -98,6 +99,7 @@ int signUp(vector<User>& users, string filename) {
             i++;
         }
     }
+
     cout << "Enter password: ";
     cin >> password;
     User newUser;
@@ -117,8 +119,10 @@ int logIn(vector<User>& users) {
     int numberOfUsers = users.size();
     cout << "Enter username: ";
     cin >> username;
+
     for (int i = 0; i < numberOfUsers; i++) {
         if (users[i].username == username) {
+
             for (int attempt = 0; attempt < 3; attempt++) {
                 cout << "Enter password. " << 3 - attempt << " attempt(s) remaining: ";
                 cin >> password;
@@ -128,11 +132,13 @@ int logIn(vector<User>& users) {
                     return users[i].id;
                 }
             }
+
             cout << "You entered invalid password 3 times. Wait 3 seconds before next attempt." << endl;
             Sleep(3000);
             return 0;
         }
     }
+
     cout << "Username doesn't exist" << endl;
     Sleep(1500);
     return 0;
@@ -164,6 +170,7 @@ void changePassword(vector<User>& users, int idOfLoggedUser, string usersFilenam
     int numberOfUsers = users.size();
     cout << "Enter new password: ";
     cin >> newPassword;
+
     for (int i = 0; i < numberOfUsers; i++) {
         if (users[i].id == idOfLoggedUser) {
             users[idOfLoggedUser - 1].password = newPassword;
@@ -181,6 +188,7 @@ void loadUsers(vector<User>& users, string filename) {
 
     file.open(filename, ios::in);
     if (file.good()) {
+
         while (getline(file, line)) { // Loading database
             istringstream iss(line);
 
@@ -195,6 +203,7 @@ void loadUsers(vector<User>& users, string filename) {
 
             users.push_back(user);
         }
+
         file.close();
     }
 }
@@ -210,6 +219,7 @@ int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, str
 
     file.open(filename, ios::in);
     if (file.good()) {
+
         while (getline(file, line)) { // Loading database
             istringstream iss(line);
 
@@ -235,9 +245,10 @@ int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, str
                 addressees.push_back(addressee);
             }
         }
+
         file.close();
     } else {
-        cout << "Failed to open the file" << endl;
+        cout << "Failed to open the file (no file?)" << endl;
         lastAddresseeId = 0;
     }
     return lastAddresseeId;
@@ -249,7 +260,6 @@ void waitForKeyPress() {
 }
 
 void showOneAddressee(const vector <Addressee>& addressees, int id) {
-    //cout << endl;
     cout << "Id:         " << addressees[id].id << endl;
     cout << "First name: " << addressees[id].firstName << endl;
     cout << "Last name:  " << addressees[id].lastName << endl;
@@ -275,7 +285,7 @@ void appendNewAddresseeToAddresseesFile(Addressee addressee, int idOfLoggedUser,
         cout << "File updated" << endl;
         Sleep(1500);
     } else {
-        cout << "failed to open addressee file and save the data in it" << endl;
+        cout << "Failed to open addressee file and save the data in it" << endl;
         Sleep(1500);
     }
 }
@@ -630,7 +640,7 @@ int main() {
                 break;
             case '7':
                 changePassword(users, idOfLoggedUser, usersFilename);
-                Sleep(1500); // To delete
+                //Sleep(1500); // To delete
                 break;
             case '8':
                 idOfLoggedUser = 0;
