@@ -599,7 +599,7 @@ int main() {
 
             cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Cleaning buffer !
 
-            lastAddresseeId = loadAddressees(addressees, idOfLoggedUser, "Addressees.txt");
+            lastAddresseeId = loadAddressees(addressees, idOfLoggedUser, addresseesFilename);
 
             switch (choice) {
             case '1':
@@ -622,7 +622,7 @@ int main() {
                 break;
             case '7':
                 changePassword(users, idOfLoggedUser);
-                Sleep(1500);
+                Sleep(1500); // To delete
                 break;
             case '8':
                 idOfLoggedUser = 0;
