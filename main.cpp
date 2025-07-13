@@ -358,7 +358,6 @@ void searchAddresseeByLastName(const vector <Addressee>& addressees) {
 
 void showAllAddressees(const vector <Addressee>& addressees) {
     int numberOfAddressees = addressees.size();
-    //cout << "Number of addressees = " << numberOfAddressees << endl;
     if (numberOfAddressees == 0) {
         cout << "Empty/corrupted database. Enter your first record." << endl;
     } else {
@@ -640,7 +639,6 @@ int main() {
                 break;
             case '7':
                 changePassword(users, idOfLoggedUser, usersFilename);
-                //Sleep(1500); // To delete
                 break;
             case '8':
                 idOfLoggedUser = 0;
