@@ -442,10 +442,84 @@ void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, 
         cout << "Incorrect id" << endl;
         Sleep(1500);
 }
-// ******************* START saveDataAfterRemovingAddressee findAddresseeIndex removeAddressee *******************
+// ******************* END saveDataAfterRemovingAddressee findAddresseeIndex removeAddressee *******************
 
+// ******************* START editAddressee *******************
 void editAddressee(vector <Addressee>& addressees, string filename) {
+    int id;
+    int index;
+    char choiceFromEditOptions = '0';
+    Addressee addressee;
+    string firstName, lastName, phone, email, address;
+
+    cout << "Provide id of the person you want to edit. ";
+    id = readIntNumber();
+    index = findAddresseeIndex(addressees, addressees.size(), id);
+
+    if (index > -1) {
+        cout << endl;
+        cout << "Data of the person to edit" << endl;
+        showOneAddressee(addressees, index);
+        cout << endl;
+        showEditOptions();
+
+        while ((choiceFromEditOptions < '1') || (choiceFromEditOptions > '6')) {
+            choiceFromEditOptions = readCharacter();
+            switch (choiceFromEditOptions) {
+            case '1':
+                cout << "Enter first name: ";
+                firstName = readLine();
+                addressees[index].firstName = firstName;
+                saveData(addressees, filename);
+                cout << "First name changed" << endl;
+                Sleep(1500);
+                break;
+            case '2':
+                cout << "Enter last name: ";
+                lastName = readLine();
+                addressees[index].lastName = lastName;
+                saveData(addressees, filename);
+                cout << "Last name changed" << endl;
+                Sleep(1500);
+                break;
+            case '3':
+                cout << "Enter phone number: ";
+                phone = readLine();
+                addressees[index].phone = phone;
+                saveData(addressees, filename);
+                cout << "Phone number changed" << endl;
+                Sleep(1500);
+                break;
+            case '4':
+                cout << "Enter email: ";
+                email = readLine();
+                addressees[index].email = email;
+                saveData(addressees, filename);
+                cout << "Email changed" << endl;
+                Sleep(1500);
+                break;
+            case '5':
+                cout << "Enter address: ";
+                address = readLine();
+                addressees[index].address = address;
+                saveData(addressees, filename);
+                cout << "Address changed" << endl;
+                Sleep(1500);
+                break;
+            case '6':
+                break;;
+            default:
+                cout << "Such an option does not exist. Enter again. " << endl;
+                break;
+            }
+        }
+    } else {
+        cout << "Incorrect id." << endl;
+        waitForKeyPress();
+    }
 }
+
+// ******************* END editAddressee *******************
 
 int main() {
     vector<User> users;
