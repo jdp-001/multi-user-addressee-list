@@ -141,13 +141,13 @@ int logIn(vector<User>& users) {
 
 // Change the password of the logged in user
 void changePassword(vector<User>& users, int idOfLoggedUser) {
-    string password;
+    string newPassword;
     int numberOfUsers = users.size();
     cout << "Enter new password: ";
-    cin >> password;
+    cin >> newPassword;
     for (int i = 0; i < numberOfUsers; i++) {
         if (users[i].id == idOfLoggedUser) {
-            users[idOfLoggedUser - 1].password = password;
+            users[idOfLoggedUser - 1].password = newPassword;
             cout << "Password changed" << endl;
             Sleep(1500);
         }
