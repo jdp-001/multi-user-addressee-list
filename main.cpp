@@ -64,7 +64,7 @@ int readIntNumber() {
     return number;
 }
 
-void appendNewUserToUsersFile(User user, string filename) {
+void appendNewUserToUsersFile(const User& user, const string& filename) {
     fstream file;
     file.open(filename, ios::out | ios::app);
 
