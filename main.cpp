@@ -268,7 +268,7 @@ void showOneAddressee(const vector <Addressee>& addressees, const int id) {
     cout << "Address:    " << addressees[id].address << endl;
 }
 
-void appendNewAddresseeToAddresseesFile(Addressee addressee, int idOfLoggedUser, string filename) {
+void appendNewAddresseeToAddresseesFile(const Addressee& addressee, const int idOfLoggedUser, const string& filename) {
     fstream file;
     file.open(filename, ios::out | ios::app);
 
