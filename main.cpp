@@ -430,7 +430,7 @@ void removeAddressee(vector <Addressee>& addressees, const string& addresseesFil
     int index;
     char character;
 
-    cout << "Enter the id of the person you want to remove from the list. ";
+    cout << "Enter the id of the person you want to remove from the list: ";
     id = readIntNumber();
     index = findAddresseeIndex(addressees, numberOfAddressees, id);
 
@@ -568,7 +568,7 @@ int main() {
     char choice;
     string usersFilename = "Users.txt";
     string addresseesFilename = "Addressees.txt";
-    int lastAddresseeId = 0; // !!!! Verify !!!!
+    int lastAddresseeId = 0;
 
     loadUsers(users, usersFilename);
 
