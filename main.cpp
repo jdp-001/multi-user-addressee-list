@@ -23,7 +23,6 @@ struct User {
 
 struct Addressee {
     int id;
-    //int userId;
     string firstName;
     string lastName;
     string phone;
@@ -178,7 +177,6 @@ void changePassword(vector<User>& users, int idOfLoggedUser, string usersFilenam
 void loadUsers(vector<User>& users, string filename) {
     fstream file;
     string line, userId, username, password, dummy;
-    //int userCounter = 0;
     User user;
 
     file.open(filename, ios::in);
@@ -196,7 +194,6 @@ void loadUsers(vector<User>& users, string filename) {
             user.password = password;
 
             users.push_back(user);
-            //userCounter++;
         }
         file.close();
     }
@@ -206,8 +203,7 @@ void loadUsers(vector<User>& users, string filename) {
 int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, string filename) {
     fstream file;
     string line, id, userId, firstName, lastName, phone, email, address, dummy;
-    //int addresseeCounter = 0;
-    int lastAddresseeId = 0; //!!!! Verify !!!!
+    int lastAddresseeId = 0;
     Addressee addressee;
 
     addressees.clear();
@@ -240,7 +236,6 @@ int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, str
             }
         }
         file.close();
-        //return addresseeCounter; // also sets numberOfAddressees!
     } else {
         cout << "Failed to open the file" << endl;
         lastAddresseeId = 0;
@@ -261,7 +256,6 @@ void showOneAddressee(const vector <Addressee>& addressees, int id) {
     cout << "Phone:      " << addressees[id].phone << endl;
     cout << "Email:      " << addressees[id].email << endl;
     cout << "Address:    " << addressees[id].address << endl;
-    //cout << endl;
 }
 
 void appendNewAddresseeToAddresseesFile(Addressee addressee, int idOfLoggedUser, string filename) {
@@ -357,7 +351,6 @@ void showAllAddressees(const vector <Addressee>& addressees) {
     //cout << "Number of addressees = " << numberOfAddressees << endl;
     if (numberOfAddressees == 0) {
         cout << "Empty/corrupted database. Enter your first record." << endl;
-        //waitForKeyPress();
     } else {
         system("cls");
         cout << "    >>>> ADDRESSEES <<<<   " << endl;
@@ -370,8 +363,6 @@ void showAllAddressees(const vector <Addressee>& addressees) {
     }
     waitForKeyPress();
 }
-
-// ******************* START saveDataAfterRemovingAddressee findAddresseeIndex removeAddressee *******************
 
 void saveDataAfterRemovingOrEditingAddressee(int idOfLoggedUser, int removedAddresseeId, string addresseesFilename, const string& editedLine = "" ) {
     fstream addresseesFile, temporaryFile;
@@ -463,9 +454,6 @@ void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, 
         Sleep(1500);
     }
 }
-// ******************* END saveDataAfterRemovingAddressee findAddresseeIndex removeAddressee *******************
-
-// ******************* START editAddressee *******************
 
 void showEditOptions() {
     cout << "    >>>> EDIT MENU <<<<    " << endl;
@@ -566,8 +554,6 @@ void editAddressee(vector <Addressee>& addressees, string addresseesFilename, in
         waitForKeyPress();
     }
 }
-
-// ******************* END editAddressee *******************
 
 int main() {
     vector<User> users;
