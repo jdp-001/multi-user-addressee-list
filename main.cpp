@@ -461,14 +461,14 @@ void showEditOptions() {
     cout << "Enter your choice (1-6 + Enter) ";
 }
 
-string convertAddresseeToLine(const Addressee& a, int idOfLoggedUser) {
-    return to_string(a.id) + "|" +
+string convertAddresseeToLine(const Addressee& addressee, int idOfLoggedUser) {
+    return to_string(addressee.id) + "|" +
            to_string(idOfLoggedUser) + "|" +
-           a.firstName + "|" +
-           a.lastName + "|" +
-           a.phone + "|" +
-           a.email + "|" +
-           a.address + "|";
+           addressee.firstName + "|" +
+           addressee.lastName + "|" +
+           addressee.phone + "|" +
+           addressee.email + "|" +
+           addressee.address + "|";
 }
 
 void editAddressee(vector <Addressee>& addressees, string addresseesFilename, int idOfLoggedUser) {
