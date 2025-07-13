@@ -241,10 +241,11 @@ int loadAddressees(vector<Addressee>& addressees, const int& idOfLoggedUser, str
         }
         file.close();
         //return addresseeCounter; // also sets numberOfAddressees!
-        return lastAddresseeId;
     } else {
-        //cout << "FILE IS NOT GOOD" << endl;
+        cout << "Failed to open the file" << endl;
+        lastAddresseeId = 0;
     }
+    return lastAddresseeId;
 }
 
 void waitForKeyPress() {
