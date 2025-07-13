@@ -415,7 +415,7 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
 }
 
 
-int findAddresseeIndex(const vector <Addressee>& addressees, int numberOfAdressees, int id) {
+int findAddresseeIndex(const vector <Addressee>& addressees, const int numberOfAdressees, const int id) {
     int result = -1;
 
     for (int i = 0; i < numberOfAdressees; i++) {
