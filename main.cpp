@@ -352,7 +352,7 @@ void showAllAddressees(const vector <Addressee>& addressees) {
     waitForKeyPress();
 }
 
-// ******************* UNDER DEVELOPMENT - START *******************
+// ******************* START saveDataAfterRemovingAddressee findAddresseeIndex removeAddressee *******************
 
 void saveDataAfterRemovingAddressee(int idOfLoggedUser, int removedAddresseeId, string addresseesFilename) {
     fstream addresseesFile, temporaryFile;
@@ -442,7 +442,7 @@ void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, 
         cout << "Incorrect id" << endl;
         Sleep(1500);
 }
-//   ******************* UNDER DEVELOPMENT - END  *******************
+// ******************* START saveDataAfterRemovingAddressee findAddresseeIndex removeAddressee *******************
 
 void editAddressee(vector <Addressee>& addressees, string filename) {
 }
