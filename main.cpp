@@ -445,6 +445,20 @@ void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, 
 // ******************* END saveDataAfterRemovingAddressee findAddresseeIndex removeAddressee *******************
 
 // ******************* START editAddressee *******************
+
+void showEditOptions() {
+    cout << "EDIT OPTIONS" << endl;
+    cout << "------------" << endl;
+    cout << "1. First name" << endl;
+    cout << "2. Last name" << endl;
+    cout << "3. Phone number" << endl;
+    cout << "4. Email" << endl;
+    cout << "5. Address" << endl;
+    cout << "6. Return to Menu" << endl;
+    cout << endl;
+    cout << "Enter your choice (1-6 + Enter) ";
+}
+
 void editAddressee(vector <Addressee>& addressees, string filename) {
     int id;
     int index;
@@ -470,7 +484,7 @@ void editAddressee(vector <Addressee>& addressees, string filename) {
                 cout << "Enter first name: ";
                 firstName = readLine();
                 addressees[index].firstName = firstName;
-                saveData(addressees, filename);
+                //saveData(addressees, filename);
                 cout << "First name changed" << endl;
                 Sleep(1500);
                 break;
@@ -478,7 +492,7 @@ void editAddressee(vector <Addressee>& addressees, string filename) {
                 cout << "Enter last name: ";
                 lastName = readLine();
                 addressees[index].lastName = lastName;
-                saveData(addressees, filename);
+                //saveData(addressees, filename);
                 cout << "Last name changed" << endl;
                 Sleep(1500);
                 break;
@@ -486,7 +500,7 @@ void editAddressee(vector <Addressee>& addressees, string filename) {
                 cout << "Enter phone number: ";
                 phone = readLine();
                 addressees[index].phone = phone;
-                saveData(addressees, filename);
+                //saveData(addressees, filename);
                 cout << "Phone number changed" << endl;
                 Sleep(1500);
                 break;
@@ -494,7 +508,7 @@ void editAddressee(vector <Addressee>& addressees, string filename) {
                 cout << "Enter email: ";
                 email = readLine();
                 addressees[index].email = email;
-                saveData(addressees, filename);
+                //saveData(addressees, filename);
                 cout << "Email changed" << endl;
                 Sleep(1500);
                 break;
@@ -502,7 +516,7 @@ void editAddressee(vector <Addressee>& addressees, string filename) {
                 cout << "Enter address: ";
                 address = readLine();
                 addressees[index].address = address;
-                saveData(addressees, filename);
+                //saveData(addressees, filename);
                 cout << "Address changed" << endl;
                 Sleep(1500);
                 break;
