@@ -427,7 +427,7 @@ int findAddresseeIndex(const vector <Addressee>& addressees, const int numberOfA
     return result;
 }
 
-void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, int idOfLoggedUser) {
+void removeAddressee(vector <Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
     int numberOfAddressees = addressees.size();
     int id;
     int index;
