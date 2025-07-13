@@ -165,7 +165,7 @@ void saveUsersFile(vector<User>& users, const string& usersFilename) {
 }
 
 // Change the password of the logged in user
-void changePassword(vector<User>& users, int idOfLoggedUser, string usersFilename) {
+void changePassword(vector<User>& users, const int idOfLoggedUser, const string& usersFilename) {
     string newPassword;
     int numberOfUsers = users.size();
     cout << "Enter new password: ";
