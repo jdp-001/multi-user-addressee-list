@@ -354,7 +354,7 @@ void showAllAddressees(const vector <Addressee>& addressees) {
 
 // ******************* START saveDataAfterRemovingAddressee findAddresseeIndex removeAddressee *******************
 
-void saveDataAfterRemovingAddressee(int idOfLoggedUser, int removedAddresseeId, string addresseesFilename) {
+void saveDataAfterRemovingOrEditingAddressee(int idOfLoggedUser, int removedAddresseeId, string addresseesFilename, const string& editedLine = "" ) {
     fstream addresseesFile, temporaryFile;
     string line, id, userId, firstName, lastName, phone, email, address, dummy;
 
@@ -369,8 +369,9 @@ void saveDataAfterRemovingAddressee(int idOfLoggedUser, int removedAddresseeId, 
             getline(iss, userId, '|');
 
             if (!((stoi(userId) == idOfLoggedUser) && (stoi(id) == removedAddresseeId))) {
-
-            temporaryFile << line << endl;
+                temporaryFile << line << endl;
+            } else if (editedLine != "") {
+                temporaryFile<< editedLine << endl;
             }
         }
     } else {
@@ -430,7 +431,7 @@ void removeAddressee(vector <Addressee>& addressees, string addresseesFilename, 
                 addressees.erase(addressees.begin() + index);
                 numberOfAddressees--;
                 cout << "Addressee deleted" << endl;
-                saveDataAfterRemovingAddressee(idOfLoggedUser, id, addresseesFilename);
+                saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename);
                 break;
             } else if (character == 'N' || character == 'n')
                 break;
