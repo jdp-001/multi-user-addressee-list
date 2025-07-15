@@ -318,7 +318,7 @@ void addAddressee(vector<Addressee>& addressees, const int idOfLoggedUser, const
 void searchAddresseeByFirstName(const vector<Addressee>& addressees) {
     string firstName;
 
-    cout << "Enter the first name of the person whose data is to be displayed. ";
+    cout << "Enter first name of the person to be displayed. ";
     firstName = readLine();
     bool found = false;
 
@@ -336,7 +336,7 @@ void searchAddresseeByFirstName(const vector<Addressee>& addressees) {
 void searchAddresseeByLastName(const vector<Addressee>& addressees) {
     string lastName;
 
-    cout << "Enter the last name of the person whose data is to be displayed. ";
+    cout << "Enter last name of the person to be displayed: ";
     lastName = readLine();
     bool found = false;
 
