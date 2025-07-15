@@ -257,7 +257,7 @@ void waitForKeyPress() {
     getch();
 }
 
-void showOneAddressee(const vector <Addressee>& addressees, const int id) {
+void showOneAddressee(const vector<Addressee>& addressees, const int id) {
     cout << "Id:         " << addressees[id].id << endl;
     cout << "First name: " << addressees[id].firstName << endl;
     cout << "Last name:  " << addressees[id].lastName << endl;
@@ -288,7 +288,7 @@ void appendNewAddresseeToAddresseesFile(const Addressee& addressee, const int id
     }
 }
 
-void addAddressee(vector <Addressee>& addressees, const int idOfLoggedUser, const string& filename, const int lastAddresseeId) {
+void addAddressee(vector<Addressee>& addressees, const int idOfLoggedUser, const string& filename, const int lastAddresseeId) {
 
     Addressee addressee;
 
@@ -315,7 +315,7 @@ void addAddressee(vector <Addressee>& addressees, const int idOfLoggedUser, cons
     appendNewAddresseeToAddresseesFile(addressee, idOfLoggedUser, filename);
 }
 
-void searchAddresseeByFirstName(const vector <Addressee>& addressees) {
+void searchAddresseeByFirstName(const vector<Addressee>& addressees) {
     string firstName;
 
     cout << "Enter the first name of the person whose data is to be displayed. ";
@@ -333,7 +333,7 @@ void searchAddresseeByFirstName(const vector <Addressee>& addressees) {
     waitForKeyPress();
 }
 
-void searchAddresseeByLastName(const vector <Addressee>& addressees) {
+void searchAddresseeByLastName(const vector<Addressee>& addressees) {
     string lastName;
 
     cout << "Enter the last name of the person whose data is to be displayed. ";
@@ -351,7 +351,7 @@ void searchAddresseeByLastName(const vector <Addressee>& addressees) {
     waitForKeyPress();
 }
 
-void showAllAddressees(const vector <Addressee>& addressees) {
+void showAllAddressees(const vector<Addressee>& addressees) {
     int numberOfAddressees = addressees.size();
     if (numberOfAddressees == 0) {
         cout << "Empty/corrupted database. Enter your first record." << endl;
@@ -410,7 +410,7 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
 }
 
 
-int findAddresseeIndex(const vector <Addressee>& addressees, const int numberOfAdressees, const int id) {
+int findAddresseeIndex(const vector<Addressee>& addressees, const int numberOfAdressees, const int id) {
     int result = -1;
 
     for (int i = 0; i < numberOfAdressees; i++) {
@@ -422,7 +422,7 @@ int findAddresseeIndex(const vector <Addressee>& addressees, const int numberOfA
     return result;
 }
 
-void removeAddressee(vector <Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
+void removeAddressee(vector<Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
     int numberOfAddressees = addressees.size();
     int id;
     int index;
@@ -483,7 +483,7 @@ string convertAddresseeToLine(const Addressee& addressee, const int idOfLoggedUs
            addressee.address + "|";
 }
 
-void editAddressee(vector <Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
+void editAddressee(vector<Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
     int id;
     int index;
     char choiceFromEditOptions = '0';
