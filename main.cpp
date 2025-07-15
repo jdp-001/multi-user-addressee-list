@@ -113,7 +113,7 @@ void signUp(vector<User>& users, const string& filename) {
 }
 
 // Log the user and return his id
-int logIn(vector<User>& users) {
+int logIn(const vector<User>& users) {
     string username, password;
     int numberOfUsers = users.size();
     cout << "Enter username: ";
