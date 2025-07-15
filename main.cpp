@@ -407,8 +407,6 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
     } else {
         cout << "Error while renaming file" << endl;
     }
-    //Sleep(1500);
-    //waitForKeyPress();
 }
 
 
