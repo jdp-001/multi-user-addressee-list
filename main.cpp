@@ -418,7 +418,7 @@ void removeAddressee(vector<Addressee>& addressees, const string& addresseesFile
     int index;
     char character;
 
-    cout << "Enter id of addressee to be removed: ";
+    cout << "Enter the id of addressee to remove: ";
     id = readIntNumber();
     index = findAddresseeIndex(addressees, numberOfAddressees, id);
 
@@ -537,7 +537,7 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
                 Sleep(1500);
                 break;
             case '6':
-                break;;
+                break;
             default:
                 cout << "Such an option does not exist. Enter again. " << endl;
                 break;
