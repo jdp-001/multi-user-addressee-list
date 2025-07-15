@@ -399,10 +399,10 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
     if (result) cout << "Error while renaming file" << endl;
 }
 
-int findAddresseeIndex(const vector<Addressee>& addressees, const int numberOfAdressees, const int id) {
+int findAddresseeIndex(const vector<Addressee>& addressees, const int id) {
     int result = -1;
 
-    for (int i = 0; i < numberOfAdressees; i++) {
+    for (int i = 0; i < addressees.size(); i++) {
         if (addressees[i].id == id) {
             result = i;
             break;
@@ -419,7 +419,7 @@ void removeAddressee(vector<Addressee>& addressees, const string& addresseesFile
 
     cout << "Enter the id of addressee to remove: ";
     id = readIntNumber();
-    index = findAddresseeIndex(addressees, numberOfAddressees, id);
+    index = findAddresseeIndex(addressees, id);
 
     if (index > -1) {
         showOneAddressee(addressees, index);
@@ -481,7 +481,7 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
 
     cout << "Enter the ID of the addressee to edit: ";
     id = readIntNumber();
-    index = findAddresseeIndex(addressees, addressees.size(), id);
+    index = findAddresseeIndex(addressees, id);
 
     if (index > -1) {
         cout << endl;
