@@ -207,7 +207,7 @@ void loadUsers(vector<User>& users, const string& filename) {
     }
 }
 
-// Load Addressees of the currently logged user
+// Load Addressees of the currently logged user and return last addressee id (of all users)
 int loadAddressees(vector<Addressee>& addressees, const int idOfLoggedUser, const string& filename) {
     fstream file;
     string line, id, userId, firstName, lastName, phone, email, address, dummy;
@@ -248,7 +248,6 @@ int loadAddressees(vector<Addressee>& addressees, const int idOfLoggedUser, cons
         file.close();
     } else {
         cout << "Failed to open the file (no file?)" << endl;
-        lastAddresseeId = 0;
     }
     return lastAddresseeId;
 }
