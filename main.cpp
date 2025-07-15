@@ -155,8 +155,6 @@ void saveUsersFile(vector<User>& users, const string& usersFilename) {
             usersFile << users[i].password << "|" << endl;
         }
         usersFile.close();
-        cout << "File saved" << endl;
-        Sleep(1500);
     } else {
         cout << "Failed to open the file and save the data in it" << endl;
         Sleep(1500);
@@ -172,10 +170,11 @@ void changePassword(vector<User>& users, const int idOfLoggedUser, const string&
 
     for (int i = 0; i < numberOfUsers; i++) {
         if (users[i].id == idOfLoggedUser) {
-            users[idOfLoggedUser - 1].password = newPassword;
+            users[i].password = newPassword;
             cout << "Password changed" << endl;
             Sleep(1500);
             saveUsersFile(users, usersFilename);
+            break;
         }
     }
 }
