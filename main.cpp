@@ -480,7 +480,7 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
     Addressee addressee;
     string firstName, lastName, phone, email, address;
 
-    cout << "Provide id of the person you want to edit. ";
+    cout << "Enter the ID of the addressee to edit: ";
     id = readIntNumber();
     index = findAddresseeIndex(addressees, addressees.size(), id);
 
@@ -539,7 +539,7 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
             case '6':
                 break;
             default:
-                cout << "Such an option does not exist. Enter again. " << endl;
+                cout << "Invalid option. Please try again: " << endl;
                 break;
             }
         }
