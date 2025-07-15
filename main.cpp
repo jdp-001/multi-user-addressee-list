@@ -440,7 +440,7 @@ void removeAddressee(vector<Addressee>& addressees, const string& addresseesFile
             } else if (character == 'N' || character == 'n')
                 break;
             else
-                cout << "Invalid key. Y / y to delete, N / n to not." << endl;
+                cout << "Invalid key. Y/y to delete, N/n to not." << endl;
         } while (character != 'Y' && character != 'y' && character != 'N'
                  && character != 'n');
     } else {
