@@ -82,7 +82,7 @@ void appendNewUserToUsersFile(const User& user, const string& filename) {
     }
 }
 
-// Register a new user and return number of logged users
+// Register a new user
 void signUp(vector<User>& users, const string& filename) {
     string username, password;
     int numberOfUsers = users.size();
