@@ -83,7 +83,7 @@ void appendNewUserToUsersFile(const User& user, const string& filename) {
 }
 
 // Register a new user and return number of logged users
-int signUp(vector<User>& users, const string& filename) {
+void signUp(vector<User>& users, const string& filename) {
     string username, password;
     int numberOfUsers = users.size();
     cout << "Enter username: ";
@@ -110,7 +110,6 @@ int signUp(vector<User>& users, const string& filename) {
     cout << "Account created" << endl;
     appendNewUserToUsersFile(newUser, filename);
     Sleep(1500);
-    return numberOfUsers + 1;
 }
 
 // Log the user and return his id
