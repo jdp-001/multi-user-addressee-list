@@ -368,7 +368,7 @@ void showAllAddressees(const vector<Addressee>& addressees) {
     waitForKeyPress();
 }
 
-void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int removedAddresseeId, const string& addresseesFilename, const string& editedLine = "" ) {
+void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int removedOrEditedAddresseeId, const string& addresseesFilename, const string& editedLine = "" ) {
     fstream addresseesFile, temporaryFile;
     string line, id, userId, firstName, lastName, phone, email, address, dummy;
 
@@ -382,7 +382,7 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
             getline(iss, id, '|');
             getline(iss, userId, '|');
 
-            if (!((stoi(userId) == idOfLoggedUser) && (stoi(id) == removedAddresseeId))) {
+            if (!((stoi(userId) == idOfLoggedUser) && (stoi(id) == removedOrEditedAddresseeId))) {
                 temporaryFile << line << endl;
             } else if (editedLine != "") {
                 temporaryFile<< editedLine << endl;
