@@ -394,19 +394,9 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
     addresseesFile.close();
     temporaryFile.close();
 
-    if (remove(addresseesFilename.c_str()) == 0) {
-        //cout << "File deleted" << endl; // left for test purposes
-    } else {
-        cout << "Error while deleting file" << endl;
-    }
-
+    if (remove(addresseesFilename.c_str())) cout << "Error while deleting file" << endl;
     int result = rename("Temporary.txt", addresseesFilename.c_str());
-
-    if (result == 0) {
-        //cout << "File renamed successfully" << endl; // left for test purposes
-    } else {
-        cout << "Error while renaming file" << endl;
-    }
+    if (result) cout << "Error while renaming file" << endl;
 }
 
 
