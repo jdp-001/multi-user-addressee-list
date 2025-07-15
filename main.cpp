@@ -256,13 +256,13 @@ void waitForKeyPress() {
     getch();
 }
 
-void showOneAddressee(const vector<Addressee>& addressees, const int id) {
-    cout << "Id:         " << addressees[id].id << endl;
-    cout << "First name: " << addressees[id].firstName << endl;
-    cout << "Last name:  " << addressees[id].lastName << endl;
-    cout << "Phone:      " << addressees[id].phone << endl;
-    cout << "Email:      " << addressees[id].email << endl;
-    cout << "Address:    " << addressees[id].address << endl;
+void showOneAddressee(const vector<Addressee>& addressees, const int index) {
+    cout << "Id:         " << addressees[index].id << endl;
+    cout << "First name: " << addressees[index].firstName << endl;
+    cout << "Last name:  " << addressees[index].lastName << endl;
+    cout << "Phone:      " << addressees[index].phone << endl;
+    cout << "Email:      " << addressees[index].email << endl;
+    cout << "Address:    " << addressees[index].address << endl;
 }
 
 void appendNewAddresseeToAddresseesFile(const Addressee& addressee, const int idOfLoggedUser, const string& filename) {
