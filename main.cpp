@@ -395,10 +395,10 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
     temporaryFile.close();
 
     if (remove(addresseesFilename.c_str())) cout << "Error while deleting file" << endl;
+
     int result = rename("Temporary.txt", addresseesFilename.c_str());
     if (result) cout << "Error while renaming file" << endl;
 }
-
 
 int findAddresseeIndex(const vector<Addressee>& addressees, const int numberOfAdressees, const int id) {
     int result = -1;
@@ -418,15 +418,15 @@ void removeAddressee(vector<Addressee>& addressees, const string& addresseesFile
     int index;
     char character;
 
-    cout << "Enter the id of the person you want to remove from the list: ";
+    cout << "Enter id of addressee to be removed: ";
     id = readIntNumber();
     index = findAddresseeIndex(addressees, numberOfAddressees, id);
 
     if (index > -1) {
         showOneAddressee(addressees, index);
-        cout << "\nAre you sure you want to remove this addressee? ";
-        cout << "\nPress Y or y and the Enter key to delete.";
-        cout << "\nPress N or n and the Enter key to not delete. ";
+        cout << "\nAre you sure?";
+        cout << "\nY/y + Enter to delete.";
+        cout << "\nN/n + Enter to not delete. ";
 
         do {
             character = readCharacter();
