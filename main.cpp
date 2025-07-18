@@ -472,11 +472,6 @@ string convertAddresseeToLine(const Addressee& addressee, const int idOfLoggedUs
            addressee.address + "|";
 }
 
-void messageOfEditAddressee(string textToDisplay) {
-
-
-}
-
 void editAddressee(vector<Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
     int id;
     int index;
