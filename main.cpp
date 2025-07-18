@@ -339,15 +339,14 @@ void searchAddresseeByLastName(const vector<Addressee>& addressees) {
 }
 
 void showAllAddressees(const vector<Addressee>& addressees) {
-    int numberOfAddressees = addressees.size();
-    if (numberOfAddressees == 0) {
+    if (addressees.size() == 0) {
         cout << "Empty/corrupted database. Enter your first record." << endl;
     } else {
         system("cls");
         cout << "    >>>> ADDRESSEES <<<<   " << endl;
         cout << "---------------------------" << endl;
 
-        for (int i = 0; i < numberOfAddressees; i++) {
+        for (int i = 0; i < addressees.size(); i++) {
             showOneAddressee(addressees, i);
             cout << "---------------------------" << endl;
         }
