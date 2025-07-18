@@ -472,12 +472,17 @@ string convertAddresseeToLine(const Addressee& addressee, const int idOfLoggedUs
            addressee.address + "|";
 }
 
+void messageOfEditAddressee(string textToDisplay) {
+
+
+}
+
 void editAddressee(vector<Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
     int id;
     int index;
     char choiceFromEditOptions = '0';
     Addressee addressee;
-    string firstName, lastName, phone, email, address;
+    //string firstName, lastName, phone, email, address;
 
     cout << "Enter the ID of the addressee to edit: ";
     id = readIntNumber();
@@ -497,40 +502,35 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
             switch (choiceFromEditOptions) {
             case '1':
                 cout << "Enter first name: ";
-                firstName = readLine();
-                addressees[index].firstName = firstName;
+                addressees[index].firstName = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
                 cout << "First name changed" << endl;
                 Sleep(1500);
                 break;
             case '2':
                 cout << "Enter last name: ";
-                lastName = readLine();
-                addressees[index].lastName = lastName;
+                addressees[index].lastName = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
                 cout << "Last name changed" << endl;
                 Sleep(1500);
                 break;
             case '3':
                 cout << "Enter phone number: ";
-                phone = readLine();
-                addressees[index].phone = phone;
+                addressees[index].phone = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
                 cout << "Phone number changed" << endl;
                 Sleep(1500);
                 break;
             case '4':
                 cout << "Enter email: ";
-                email = readLine();
-                addressees[index].email = email;
+                addressees[index].email = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
                 cout << "Email changed" << endl;
                 Sleep(1500);
                 break;
             case '5':
                 cout << "Enter address: ";
-                address = readLine();
-                addressees[index].address = address;
+                addressees[index].address = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
                 cout << "Address changed" << endl;
                 Sleep(1500);
