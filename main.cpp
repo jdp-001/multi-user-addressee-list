@@ -346,7 +346,7 @@ void showAllAddressees(const vector<Addressee>& addressees) {
         cout << "    >>>> ADDRESSEES <<<<   " << endl;
         cout << "---------------------------" << endl;
 
-        for (int i = 0; i < addressees.size(); i++) {
+        for (size_t i = 0; i < addressees.size(); i++) {
             showOneAddressee(addressees, i);
             cout << "---------------------------" << endl;
         }
