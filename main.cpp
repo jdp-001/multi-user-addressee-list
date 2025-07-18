@@ -138,7 +138,6 @@ int logIn(const vector<User>& users) {
 // Save users file
 void saveUsersFile(vector<User>& users, const string& usersFilename) {
     fstream usersFile;
-    //int numberOfUsers = users.size();
 
     usersFile.open(usersFilename, ios::out);
     if (usersFile.good()) {
@@ -156,7 +155,6 @@ void saveUsersFile(vector<User>& users, const string& usersFilename) {
 // Change the password of the logged in user
 void changePassword(vector<User>& users, const int idOfLoggedUser, const string& usersFilename) {
     string newPassword;
-    //int numberOfUsers = users.size();
 
     cout << "Enter new password: ";
     cin >> newPassword;
