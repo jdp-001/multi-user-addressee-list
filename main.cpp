@@ -396,7 +396,7 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
     if (remove(addresseesFilename.c_str()) != 0) cout << "Error while deleting file" << endl;
 
     int result = rename("Temporary.txt", addresseesFilename.c_str());
-    if (result) cout << "Error while renaming file" << endl;
+    if (result != 0) cout << "Error while renaming file" << endl;
 }
 
 int findAddresseeIndex(const vector<Addressee>& addressees, const int id) {
