@@ -11,8 +11,9 @@
 #include <fstream>
 #include <conio.h>
 #include <cstdio>
-
 #include <limits>
+#include <cctype>
+
 using namespace std;
 
 struct User {
@@ -34,6 +35,21 @@ string readLine() {
     string input = "";
     getline(cin, input);
     return input;
+}
+
+string convertStringIntoCapitalized(string stringToConvert) {
+    // first convert all letters to lowercase
+    for (int i = 0; i < stringToConvert.size(); i++) {
+        stringToConvert[i] = tolower(stringToConvert[i]);
+    }
+
+    // Capitalize first letters
+    for (int i = 0; i <stringToConvert.size(); i++) {
+        if ((i == 0) || ((i > 0) && (stringToConvert[i - 1] == ' ') && (stringToConvert[i] != ' '))) {
+            stringToConvert[i] = toupper(stringToConvert[i]);
+        }
+    }
+    return stringToConvert;
 }
 
 void displayMessageAndWait(const string& textToDisplay, const int durationTimeInMiliseconds) {
@@ -282,10 +298,10 @@ void addAddressee(vector<Addressee>& addressees, const int idOfLoggedUser, const
     cout << "Id: " << addressee.id << endl;
 
     cout << "Enter first name: ";
-    addressee.firstName = readLine();
+    addressee.firstName = convertStringIntoCapitalized(readLine());
 
     cout << "Enter last name: ";
-    addressee.lastName = readLine();
+    addressee.lastName = convertStringIntoCapitalized(readLine());
 
     cout << "Enter phone number: ";
     addressee.phone = readLine();
@@ -480,13 +496,13 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
             switch (choiceFromEditOptions) {
             case '1':
                 cout << "Enter first name: ";
-                addressees[index].firstName = readLine();
+                addressees[index].firstName = convertStringIntoCapitalized(readLine());
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
                 displayMessageAndWait("First name changed", 1500);
                 break;
             case '2':
                 cout << "Enter last name: ";
-                addressees[index].lastName = readLine();
+                addressees[index].lastName = convertStringIntoCapitalized(readLine());
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
                 displayMessageAndWait("Last name changed", 1500);
                 break;
