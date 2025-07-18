@@ -482,7 +482,6 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
     int index;
     char choiceFromEditOptions = '0';
     Addressee addressee;
-    //string firstName, lastName, phone, email, address;
 
     cout << "Enter the ID of the addressee to edit: ";
     id = readIntNumber();
