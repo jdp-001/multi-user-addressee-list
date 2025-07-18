@@ -36,6 +36,11 @@ string readLine() {
     return input;
 }
 
+sendMessageAndWait(const string& textToDisplay, const int durationTimeInMiliseconds) {
+    cout << textToDisplay << endl;
+    Sleep(durationTimeInMiliseconds);
+}
+
 char readCharacter() {
     string input = "";
 
