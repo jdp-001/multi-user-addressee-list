@@ -1,6 +1,6 @@
 // Program name: MultiUserAddresseeList (vectors applied)
 // Status: Code of feature/user-input branch
-// Date: 13.07.2025
+// Date: 13.07.2025 (last refactoring 18.07.2025)
 // Author: Jaroslaw Dolinski
 
 #include <iostream>
@@ -10,7 +10,7 @@
 #include <string>
 #include <fstream>
 #include <conio.h>
-#include <cstdio> // for remove()
+#include <cstdio>
 
 #include <limits>
 using namespace std;
@@ -393,7 +393,7 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
     addresseesFile.close();
     temporaryFile.close();
 
-    if (remove(addresseesFilename.c_str())) cout << "Error while deleting file" << endl;
+    if (remove(addresseesFilename.c_str()) != 0) cout << "Error while deleting file" << endl;
 
     int result = rename("Temporary.txt", addresseesFilename.c_str());
     if (result) cout << "Error while renaming file" << endl;
