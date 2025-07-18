@@ -36,7 +36,7 @@ string readLine() {
     return input;
 }
 
-sendMessageAndWait(const string& textToDisplay, const int durationTimeInMiliseconds) {
+void sendMessageAndWait(const string& textToDisplay, const int durationTimeInMiliseconds) {
     cout << textToDisplay << endl;
     Sleep(durationTimeInMiliseconds);
 }
@@ -81,10 +81,7 @@ void appendNewUserToUsersFile(const User& user, const string& filename) {
 
         cout << "File updated" << endl;
         Sleep(1500);
-    } else {
-        cout << "Failed to open the file and save the data in it" << endl;
-        Sleep(1500);
-    }
+    } else sendMessageAndWait("Failed to open the file and save the data in it", 1500);
 }
 
 // Register a new user
@@ -131,8 +128,7 @@ int logIn(const vector<User>& users) {
                 cout << "Enter password. " << 3 - attempt << " attempt(s) remaining: ";
                 cin >> password;
                 if (password == users[i].password) {
-                    cout << "You are logged in" << endl;
-                    Sleep(1500);
+                    sendMessageAndWait("You are logged in", 1500);
                     return users[i].id;
                 }
             }
@@ -142,9 +138,7 @@ int logIn(const vector<User>& users) {
             return 0;
         }
     }
-
-    cout << "Username doesn't exist" << endl;
-    Sleep(1500);
+    sendMessageAndWait("Username doesn't exist", 1500);
     return 0;
 }
 
@@ -160,10 +154,7 @@ void saveUsersFile(vector<User>& users, const string& usersFilename) {
             usersFile << users[i].password << "|" << endl;
         }
         usersFile.close();
-    } else {
-        cout << "Failed to open the file and save the data in it" << endl;
-        Sleep(1500);
-    }
+    } else sendMessageAndWait("Failed to open the file and save the data in it", 1500);
 }
 
 // Change the password of the logged in user
@@ -176,8 +167,7 @@ void changePassword(vector<User>& users, const int idOfLoggedUser, const string&
     for (int i = 0; i < numberOfUsers; i++) {
         if (users[i].id == idOfLoggedUser) {
             users[i].password = newPassword;
-            cout << "Password changed" << endl;
-            Sleep(1500);
+            sendMessageAndWait("Password changed", 1500);
             saveUsersFile(users, usersFilename);
             break;
         }
@@ -283,12 +273,9 @@ void appendNewAddresseeToAddresseesFile(const Addressee& addressee, const int id
         file << addressee.email << "|";
         file << addressee.address << "|" << endl;
         file.close();
-
-        cout << "File updated" << endl;
-        Sleep(1500);
+        sendMessageAndWait("File updated", 1500);
     } else {
-        cout << "Failed to open addressee file and save the data in it" << endl;
-        Sleep(1500);
+        sendMessageAndWait("Failed to open addressee file and save the data in it", 1500);
     }
 }
 
@@ -448,8 +435,7 @@ void removeAddressee(vector<Addressee>& addressees, const string& addresseesFile
         } while (character != 'Y' && character != 'y' && character != 'N'
                  && character != 'n');
     } else {
-        cout << "Incorrect id" << endl;
-        Sleep(1500);
+        sendMessageAndWait("Incorrect id", 1500);
     }
 }
 
@@ -503,36 +489,31 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
                 cout << "Enter first name: ";
                 addressees[index].firstName = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                cout << "First name changed" << endl;
-                Sleep(1500);
+                sendMessageAndWait("First name changed", 1500);
                 break;
             case '2':
                 cout << "Enter last name: ";
                 addressees[index].lastName = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                cout << "Last name changed" << endl;
-                Sleep(1500);
+                sendMessageAndWait("Last name changed", 1500);
                 break;
             case '3':
                 cout << "Enter phone number: ";
                 addressees[index].phone = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                cout << "Phone number changed" << endl;
-                Sleep(1500);
+                sendMessageAndWait("Phone number changed", 1500);
                 break;
             case '4':
                 cout << "Enter email: ";
                 addressees[index].email = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                cout << "Email changed" << endl;
-                Sleep(1500);
+                sendMessageAndWait("Email changed", 1500);
                 break;
             case '5':
                 cout << "Enter address: ";
                 addressees[index].address = readLine();
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                cout << "Address changed" << endl;
-                Sleep(1500);
+                sendMessageAndWait("Address changed", 1500);
                 break;
             case '6':
                 break;
@@ -627,8 +608,7 @@ int main() {
                 idOfLoggedUser = 0;
                 break;
             default:
-                cout << "Such an option does not exist." << endl;
-                Sleep(1500);
+                sendMessageAndWait("Such an option does not exist.", 1500);
                 break;
             }
         }
