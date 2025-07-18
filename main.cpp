@@ -138,12 +138,12 @@ int logIn(const vector<User>& users) {
 // Save users file
 void saveUsersFile(vector<User>& users, const string& usersFilename) {
     fstream usersFile;
-    int numberOfUsers = users.size();
+    //int numberOfUsers = users.size();
 
     usersFile.open(usersFilename, ios::out);
     if (usersFile.good()) {
 
-        for (int i = 0; i < numberOfUsers; i++) {
+        for (size_t i = 0; i < users.size(); i++) {
             usersFile << users[i].id << "|";
             usersFile << users[i].username << "|";
             usersFile << users[i].password << "|" << endl;
@@ -156,12 +156,12 @@ void saveUsersFile(vector<User>& users, const string& usersFilename) {
 // Change the password of the logged in user
 void changePassword(vector<User>& users, const int idOfLoggedUser, const string& usersFilename) {
     string newPassword;
-    int numberOfUsers = users.size();
+    //int numberOfUsers = users.size();
 
     cout << "Enter new password: ";
     cin >> newPassword;
 
-    for (int i = 0; i < numberOfUsers; i++) {
+    for (size_t i = 0; i < users.size(); i++) {
         if (users[i].id == idOfLoggedUser) {
             users[i].password = newPassword;
             displayMessageAndWait("Password changed", 1500);
@@ -389,7 +389,7 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
 int findAddresseeIndex(const vector<Addressee>& addressees, const int id) {
     int result = -1;
 
-    for (int i = 0; i < addressees.size(); i++) {
+    for (size_t i = 0; i < addressees.size(); i++) {
         if (addressees[i].id == id) {
             result = i;
             break;
