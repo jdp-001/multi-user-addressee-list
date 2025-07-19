@@ -1,6 +1,6 @@
 // Program name: MultiUserAddresseeList (vectors applied)
 // Status: Code of feature/user-input branch
-// Date: 13.07.2025 (last refactoring 19.07.2025)
+// Date: 13.07.2025 (last refactoring 20.07.2025)
 // Author: Jaroslaw Dolinski
 
 #include <iostream>
@@ -459,7 +459,6 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
     int id;
     int index;
     char choiceFromEditOptions = '0';
-    Addressee addressee;
 
     cout << "Enter the ID of the addressee to edit: ";
     id = readIntNumber();
