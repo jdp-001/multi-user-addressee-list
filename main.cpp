@@ -202,7 +202,7 @@ void loadUsers(vector<User>& users, const string& filename) {
 // Load Addressees of the currently logged user and return last addressee id (of all users)
 int loadAddressees(vector<Addressee>& addressees, const int idOfLoggedUser, const string& filename) {
     fstream file;
-    string line, id, userId, firstName, lastName, phone, email, address, dummy;
+    string line, id, userId, firstName, lastName, phone, email, address;
     int lastAddresseeId = 0;
     Addressee addressee;
 
@@ -210,7 +210,7 @@ int loadAddressees(vector<Addressee>& addressees, const int idOfLoggedUser, cons
     file.open(filename, ios::in);
     if (file.good()) {
 
-        while (getline(file, line)) { // Loading database
+        while (getline(file, line)) {
             istringstream iss(line);
 
             getline(iss, id, '|');
@@ -220,7 +220,6 @@ int loadAddressees(vector<Addressee>& addressees, const int idOfLoggedUser, cons
             getline(iss, phone, '|');
             getline(iss, email, '|');
             getline(iss, address, '|');
-            getline(iss, dummy, '|'); // ignoring end '|'
 
             lastAddresseeId = stoi(id);
 
