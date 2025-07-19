@@ -366,11 +366,10 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
             getline(iss, id, '|');
             getline(iss, userId, '|');
 
-            if (!((stoi(userId) == idOfLoggedUser) && (stoi(id) == removedOrEditedAddresseeId))) {
+            if (!((stoi(userId) == idOfLoggedUser) && (stoi(id) == removedOrEditedAddresseeId)))
                 temporaryFile << line << endl;
-            } else if (editedLine != "") {
+            else if (editedLine != "")
                 temporaryFile<< editedLine << endl;
-            }
         }
     } else {
         cout << "File is not good" << endl;
