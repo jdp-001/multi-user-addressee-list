@@ -91,7 +91,6 @@ void appendNewUserToUsersFile(const User& user, const string& filename) {
 // Register a new user
 void signUp(vector<User>& users, const string& filename) {
     string username, password;
-    //int numberOfUsers = users.size();
 
     cout << "Enter username: ";
     cin >> username;
@@ -116,15 +115,14 @@ void signUp(vector<User>& users, const string& filename) {
     appendNewUserToUsersFile(newUser, filename);
 }
 
-// Log the user and return his id
+// Log in the user and return his id
 int logIn(const vector<User>& users) {
     string username, password;
-    int numberOfUsers = users.size();
 
     cout << "Enter username: ";
     cin >> username;
 
-    for (int i = 0; i < numberOfUsers; i++) {
+    for (size_t i = 0; i < users.size(); i++) {
         if (users[i].username == username) {
 
             for (int attempt = 0; attempt < 3; attempt++) {
