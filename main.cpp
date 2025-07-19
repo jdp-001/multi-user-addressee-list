@@ -157,8 +157,7 @@ void saveUsersFile(vector<User>& users, const string& usersFilename) {
     } else displayMessageAndWait("Failed to open the file and save the data in it", 1500);
 }
 
-// Change the password of the logged in user
-void changePassword(vector<User>& users, const int idOfLoggedUser, const string& usersFilename) {
+void changeLoggedUserPassword(vector<User>& users, const int idOfLoggedUser, const string& usersFilename) {
     string newPassword;
 
     cout << "Enter new password: ";
@@ -600,7 +599,7 @@ int main() {
                 editAddressee(addressees, addresseesFilename, idOfLoggedUser);
                 break;
             case '7':
-                changePassword(users, idOfLoggedUser, usersFilename);
+                changeLoggedUserPassword(users, idOfLoggedUser, usersFilename);
                 break;
             case '8':
                 idOfLoggedUser = 0;
