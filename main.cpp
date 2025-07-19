@@ -45,7 +45,8 @@ string convertStringIntoCapitalized(string stringToConvert) {
 
     // Capitalize first letters
     for (int i = 0; i <stringToConvert.size(); i++) {
-        if ((i == 0) || ((i > 0) && (stringToConvert[i - 1] == ' ') && (stringToConvert[i] != ' '))) {
+        //if ((i == 0) || ((i > 0) && (stringToConvert[i - 1] == ' ') && (stringToConvert[i] != ' '))) {
+        if ((i == 0) || ((i > 0) && (stringToConvert[i - 1] == ' '))) {
             stringToConvert[i] = toupper(stringToConvert[i]);
         }
     }
