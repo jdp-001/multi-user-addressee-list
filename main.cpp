@@ -175,19 +175,18 @@ void changeLoggedUserPassword(vector<User>& users, const int idOfLoggedUser, con
 
 void loadUsers(vector<User>& users, const string& filename) {
     fstream file;
-    string line, userId, username, password, dummy;
+    string line, userId, username, password;
     User user;
 
     file.open(filename, ios::in);
     if (file.good()) {
 
-        while (getline(file, line)) { // Loading database
+        while (getline(file, line)) {
             istringstream iss(line);
 
             getline(iss, userId, '|');
             getline(iss, username, '|');
             getline(iss, password, '|');
-            getline(iss, dummy, '|'); // ignoring end '|'
 
             user.id = stoi(userId);
             user.username = username;
