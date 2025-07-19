@@ -354,7 +354,7 @@ void showAllAddressees(const vector<Addressee>& addressees) {
 
 void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int removedOrEditedAddresseeId, const string& addresseesFilename, const string& editedLine = "" ) {
     fstream addresseesFile, temporaryFile;
-    string line, id, userId, firstName, lastName, phone, email, address;
+    string line, id, userId;
 
     addresseesFile.open(addresseesFilename, ios::in);
     temporaryFile.open("Temporary.txt", ios::out);
