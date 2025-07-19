@@ -91,13 +91,13 @@ void appendNewUserToUsersFile(const User& user, const string& filename) {
 // Register a new user
 void signUp(vector<User>& users, const string& filename) {
     string username, password;
-    int numberOfUsers = users.size();
+    //int numberOfUsers = users.size();
 
     cout << "Enter username: ";
     cin >> username;
     int i = 0;
 
-    while (i < numberOfUsers) {
+    while (i < users.size()) {
         if (users[i].username == username) {
             cout << "Such username already exists. Enter another username: ";
             cin >> username;
@@ -110,7 +110,7 @@ void signUp(vector<User>& users, const string& filename) {
     User newUser;
     newUser.username = username;
     newUser.password = password;
-    newUser.id = numberOfUsers + 1;
+    newUser.id = users.size() + 1;
     users.push_back(newUser);
     displayMessageAndWait("Account created", 1500);
     appendNewUserToUsersFile(newUser, filename);
