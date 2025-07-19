@@ -141,7 +141,6 @@ int logIn(const vector<User>& users) {
     return 0;
 }
 
-// Save users file
 void saveUsersFile(vector<User>& users, const string& usersFilename) {
     fstream usersFile;
 
