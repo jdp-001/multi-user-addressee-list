@@ -354,13 +354,13 @@ void showAllAddressees(const vector<Addressee>& addressees) {
 
 void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int removedOrEditedAddresseeId, const string& addresseesFilename, const string& editedLine = "" ) {
     fstream addresseesFile, temporaryFile;
-    string line, id, userId, firstName, lastName, phone, email, address, dummy;
+    string line, id, userId, firstName, lastName, phone, email, address;
 
     addresseesFile.open(addresseesFilename, ios::in);
     temporaryFile.open("Temporary.txt", ios::out);
 
     if (addresseesFile.good()) {
-        while (getline(addresseesFile, line)) { // Loading database
+        while (getline(addresseesFile, line)) {
             istringstream iss(line);
 
             getline(iss, id, '|');
