@@ -276,9 +276,7 @@ void appendNewAddresseeToAddresseesFile(const Addressee& addressee, const int id
 }
 
 void addAddressee(vector<Addressee>& addressees, const int idOfLoggedUser, const string& filename, const int lastAddresseeId) {
-
     Addressee addressee;
-
     addressee.id = lastAddresseeId + 1;
 
     cout << "Id: " << addressee.id << endl;
