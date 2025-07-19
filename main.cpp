@@ -1,6 +1,6 @@
 // Program name: MultiUserAddresseeList (vectors applied)
 // Status: Code of feature/user-input branch
-// Date: 13.07.2025 (last refactoring 18.07.2025)
+// Date: 13.07.2025 (last refactoring 19.07.2025)
 // Author: Jaroslaw Dolinski
 
 #include <iostream>
@@ -37,20 +37,11 @@ string readLine() {
     return input;
 }
 
-string convertStringIntoCapitalized(string stringToConvert) {
-    // first convert all letters to lowercase
-    for (int i = 0; i < stringToConvert.size(); i++) {
-        stringToConvert[i] = tolower(stringToConvert[i]);
-    }
-
-    // Capitalize first letters
-    for (int i = 0; i <stringToConvert.size(); i++) {
-        //if ((i == 0) || ((i > 0) && (stringToConvert[i - 1] == ' ') && (stringToConvert[i] != ' '))) {
-        if ((i == 0) || ((i > 0) && (stringToConvert[i - 1] == ' '))) {
-            stringToConvert[i] = toupper(stringToConvert[i]);
-        }
-    }
-    return stringToConvert;
+string convertStringIntoCapitalized(const string& input) {
+    string output = input;
+    for (size_t i = 0; i < output.size(); ++i)
+        output[i] = (i == 0 || output[i - 1] == ' ') ? toupper(output[i]) : tolower(output[i]);
+    return output;
 }
 
 void displayMessageAndWait(const string& textToDisplay, const int durationTimeInMiliseconds) {
