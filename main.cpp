@@ -272,14 +272,6 @@ void appendNewAddresseeToAddresseesFile(const Addressee& addressee, const int id
 
     if (file.good()) {
         file << convertAddresseeToLine(addressee, idOfLoggedUser) << endl;
-
-        //file << addressee.id << "|";
-        //file << idOfLoggedUser << "|";
-        //file << addressee.firstName << "|";
-        //file << addressee.lastName << "|";
-        //file << addressee.phone << "|";
-        //file << addressee.email << "|";
-        //file << addressee.address << "|" << endl;
         file.close();
         displayMessageAndWait("File updated", 1500);
     } else {
