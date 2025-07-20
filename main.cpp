@@ -256,18 +256,30 @@ void showOneAddressee(const vector<Addressee>& addressees, const int index) {
     cout << "Address:    " << addressees[index].address << endl;
 }
 
+string convertAddresseeToLine(const Addressee& addressee, const int idOfLoggedUser) {
+    return to_string(addressee.id) + "|" +
+           to_string(idOfLoggedUser) + "|" +
+           addressee.firstName + "|" +
+           addressee.lastName + "|" +
+           addressee.phone + "|" +
+           addressee.email + "|" +
+           addressee.address + "|";
+}
+
 void appendNewAddresseeToAddresseesFile(const Addressee& addressee, const int idOfLoggedUser, const string& filename) {
     fstream file;
     file.open(filename, ios::out | ios::app);
 
     if (file.good()) {
-        file << addressee.id << "|";
-        file << idOfLoggedUser << "|";
-        file << addressee.firstName << "|";
-        file << addressee.lastName << "|";
-        file << addressee.phone << "|";
-        file << addressee.email << "|";
-        file << addressee.address << "|" << endl;
+        file << convertAddresseeToLine(addressee, idOfLoggedUser) << endl;
+
+        //file << addressee.id << "|";
+        //file << idOfLoggedUser << "|";
+        //file << addressee.firstName << "|";
+        //file << addressee.lastName << "|";
+        //file << addressee.phone << "|";
+        //file << addressee.email << "|";
+        //file << addressee.address << "|" << endl;
         file.close();
         displayMessageAndWait("File updated", 1500);
     } else {
@@ -443,16 +455,6 @@ void showEditOptions() {
     cout << "6. Return to Menu" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
-}
-
-string convertAddresseeToLine(const Addressee& addressee, const int idOfLoggedUser) {
-    return to_string(addressee.id) + "|" +
-           to_string(idOfLoggedUser) + "|" +
-           addressee.firstName + "|" +
-           addressee.lastName + "|" +
-           addressee.phone + "|" +
-           addressee.email + "|" +
-           addressee.address + "|";
 }
 
 void editAddressee(vector<Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
