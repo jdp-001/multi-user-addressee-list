@@ -39,8 +39,9 @@ string readLine() {
 
 string convertStringIntoCapitalized(const string& input) {
     string output = input;
-    for (size_t i = 0; i < output.size(); ++i)
+    for (size_t i = 0; i < output.size(); ++i) {
         output[i] = (i == 0 || output[i - 1] == ' ') ? toupper(output[i]) : tolower(output[i]);
+    }
     return output;
 }
 
@@ -53,10 +54,11 @@ char readCharacter() {
     string input = "";
     while (true) {
         getline(cin, input);
-        if (input.length() == 1)
+        if (input.length() == 1) {
             return input[0];
-        else
+        } else {
             cout << "This is not a single character. Enter again: ";
+        }
     }
 }
 
@@ -68,7 +70,9 @@ int readIntNumber() {
         getline(cin, input);
         stringstream myStream(input);
 
-        if (myStream >> number) break;
+        if (myStream >> number) {
+            break;
+        }
 
         cout << "This is not a number. Enter again: ";
     }
@@ -85,7 +89,9 @@ void appendNewUserToUsersFile(const User& user, const string& filename) {
         file << user.password << "|" << endl;
         file.close();
         displayMessageAndWait("File updated", 1500);
-    } else displayMessageAndWait("Failed to open the file and save the data in it", 1500);
+    } else {
+        displayMessageAndWait("Failed to open the file and save the data in it", 1500);
+    }
 }
 
 // Register a new user
@@ -94,14 +100,16 @@ void signUp(vector<User>& users, const string& filename) {
 
     cout << "Enter username: ";
     cin >> username;
-    int i = 0;
+    size_t i = 0;
 
     while (i < users.size()) {
         if (users[i].username == username) {
             cout << "Such username already exists. Enter another username: ";
             cin >> username;
             i = 0;
-        } else i++;
+        } else {
+            i++;
+        }
     }
 
     cout << "Enter password: ";
@@ -154,7 +162,9 @@ void saveUsersFile(vector<User>& users, const string& usersFilename) {
         }
 
         usersFile.close();
-    } else displayMessageAndWait("Failed to open the file and save the data in it", 1500);
+    } else {
+        displayMessageAndWait("Failed to open the file and save the data in it", 1500);
+    }
 }
 
 void changeLoggedUserPassword(vector<User>& users, const int idOfLoggedUser, const string& usersFilename) {
@@ -318,7 +328,9 @@ void searchAddresseeByFirstName(const vector<Addressee>& addressees) {
         }
     }
 
-    if (!found) cout << "First name " << firstName << " not found" << endl;
+    if (!found) {
+        cout << "First name " << firstName << " not found" << endl;
+    }
     waitForKeyPress();
 }
 
@@ -370,10 +382,11 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
             getline(iss, id, '|');
             getline(iss, userId, '|');
 
-            if (!((stoi(userId) == idOfLoggedUser) && (stoi(id) == removedOrEditedAddresseeId)))
+            if (!((stoi(userId) == idOfLoggedUser) && (stoi(id) == removedOrEditedAddresseeId))) {
                 temporaryFile << line << endl;
-            else if (editedLine != "")
+            } else if (editedLine != "") {
                 temporaryFile<< editedLine << endl;
+            }
         }
     } else {
         cout << "File is not good" << endl;
@@ -381,10 +394,14 @@ void saveDataAfterRemovingOrEditingAddressee(const int idOfLoggedUser, const int
     addresseesFile.close();
     temporaryFile.close();
 
-    if (remove(addresseesFilename.c_str()) != 0) cout << "Error while deleting file" << endl;
+    if (remove(addresseesFilename.c_str()) != 0) {
+        cout << "Error while deleting file" << endl;
+    }
 
     int result = rename("Temporary.txt", addresseesFilename.c_str());
-    if (result != 0) cout << "Error while renaming file" << endl;
+    if (result != 0) {
+        cout << "Error while renaming file" << endl;
+    }
 }
 
 int findAddresseeIndex(const vector<Addressee>& addressees, const int id) {
@@ -426,10 +443,10 @@ void removeAddressee(vector<Addressee>& addressees, const string& addresseesFile
                 break;
             } else if (character == 'N' || character == 'n')
                 break;
-            else
+            else {
                 cout << "Invalid key. Y/y to delete, N/n to not." << endl;
-        } while (character != 'Y' && character != 'y' && character != 'N'
-                 && character != 'n');
+            }
+        } while (character != 'Y' && character != 'y' && character != 'N' && character != 'n');
     } else {
         displayMessageAndWait("Incorrect id", 1500);
     }
