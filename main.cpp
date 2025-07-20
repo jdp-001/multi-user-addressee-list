@@ -475,59 +475,53 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
     int id = readIntNumber();
     int index = findAddresseeIndex(addressees, id);
 
-    if (index > -1) {
-        cout << endl;
-        system("cls");
-        cout << "Data of the person to edit" << endl;
-        cout << "---------------------------" << endl;
-        showOneAddressee(addressees, index);
-        cout << endl;
-        showEditOptions();
+    system("cls");
+    cout << "Data of the person to edit" << endl;
+    cout << "---------------------------" << endl;
+    showOneAddressee(addressees, index);
+    cout << endl;
+    showEditOptions();
 
-        while ((choiceFromEditOptions < '1') || (choiceFromEditOptions > '6')) {
-            choiceFromEditOptions = readCharacter();
-            switch (choiceFromEditOptions) {
-            case '1':
-                cout << "Enter first name: ";
-                addressees[index].firstName = convertStringIntoCapitalized(readLine());
-                saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                displayMessageAndWait("First name changed", 1500);
-                break;
-            case '2':
-                cout << "Enter last name: ";
-                addressees[index].lastName = convertStringIntoCapitalized(readLine());
-                saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                displayMessageAndWait("Last name changed", 1500);
-                break;
-            case '3':
-                cout << "Enter phone number: ";
-                addressees[index].phone = readLine();
-                saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                displayMessageAndWait("Phone number changed", 1500);
-                break;
-            case '4':
-                cout << "Enter email: ";
-                addressees[index].email = readLine();
-                saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                displayMessageAndWait("Email changed", 1500);
-                break;
-            case '5':
-                cout << "Enter address: ";
-                addressees[index].address = readLine();
-                saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
-                displayMessageAndWait("Address changed", 1500);
-                break;
-            case '6':
-                break;
-            default:
-                cout << "Invalid option." << endl;
-                cout << "Your choice: ";
-                break;
-            }
+    while ((choiceFromEditOptions < '1') || (choiceFromEditOptions > '6')) {
+        choiceFromEditOptions = readCharacter();
+        switch (choiceFromEditOptions) {
+        case '1':
+            cout << "Enter first name: ";
+            addressees[index].firstName = convertStringIntoCapitalized(readLine());
+            saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
+            displayMessageAndWait("First name changed", 1500);
+            break;
+        case '2':
+            cout << "Enter last name: ";
+            addressees[index].lastName = convertStringIntoCapitalized(readLine());
+            saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
+            displayMessageAndWait("Last name changed", 1500);
+            break;
+        case '3':
+            cout << "Enter phone number: ";
+            addressees[index].phone = readLine();
+            saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
+            displayMessageAndWait("Phone number changed", 1500);
+            break;
+        case '4':
+            cout << "Enter email: ";
+            addressees[index].email = readLine();
+            saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
+            displayMessageAndWait("Email changed", 1500);
+            break;
+        case '5':
+            cout << "Enter address: ";
+            addressees[index].address = readLine();
+            saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename, convertAddresseeToLine(addressees[index], idOfLoggedUser));
+            displayMessageAndWait("Address changed", 1500);
+            break;
+        case '6':
+            break;
+        default:
+            cout << "Invalid option." << endl;
+            cout << "Your choice: ";
+            break;
         }
-    } else {
-        cout << "Incorrect id" << endl;
-        waitForKeyPress();
     }
 }
 
