@@ -348,7 +348,9 @@ void searchAddresseeByLastName(const vector<Addressee>& addressees) {
         }
     }
 
-    if (!found) cout << "Last name " << lastName << " not found" << endl;
+    if (!found) {
+        cout << "Last name " << lastName << " not found" << endl;
+    }
     waitForKeyPress();
 }
 
@@ -441,9 +443,9 @@ void removeAddressee(vector<Addressee>& addressees, const string& addresseesFile
                 cout << "Addressee deleted" << endl;
                 saveDataAfterRemovingOrEditingAddressee(idOfLoggedUser, id, addresseesFilename);
                 break;
-            } else if (character == 'N' || character == 'n')
+            } else if (character == 'N' || character == 'n') {
                 break;
-            else {
+            } else {
                 cout << "Invalid key. Y/y to delete, N/n to not." << endl;
             }
         } while (character != 'Y' && character != 'y' && character != 'N' && character != 'n');
