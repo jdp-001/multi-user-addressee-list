@@ -469,13 +469,11 @@ void showEditOptions() {
 }
 
 void editAddressee(vector<Addressee>& addressees, const string& addresseesFilename, const int idOfLoggedUser) {
-    int id;
-    int index;
-    char choiceFromEditOptions = '0';
+    char choiceFromEditOptions;
 
     cout << "Enter the ID of the addressee to edit: ";
-    id = readIntNumber();
-    index = findAddresseeIndex(addressees, id);
+    int id = readIntNumber();
+    int index = findAddresseeIndex(addressees, id);
 
     if (index > -1) {
         cout << endl;
@@ -522,7 +520,8 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
             case '6':
                 break;
             default:
-                cout << "Invalid option. Please try again: " << endl;
+                cout << "Invalid option." << endl;
+                cout << "Your choice: ";
                 break;
             }
         }
