@@ -482,7 +482,7 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
     cout << endl;
     showEditOptions();
 
-    while ((choiceFromEditOptions < '1') || (choiceFromEditOptions > '6')) {
+    do {
         choiceFromEditOptions = readCharacter();
         switch (choiceFromEditOptions) {
         case '1':
@@ -522,7 +522,7 @@ void editAddressee(vector<Addressee>& addressees, const string& addresseesFilena
             cout << "Your choice: ";
             break;
         }
-    }
+    } while (choiceFromEditOptions != '6');
 }
 
 int main() {
